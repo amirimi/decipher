@@ -13,7 +13,7 @@ The reader is an experienced engineer who lost the thread. Reduce the connection
 
 - Apply these rules from invocation until the explanation or walkthrough ends.
 - Under the decipher output style, apply Write plainly and Preserve accuracy to every reply in the session, including replies about coding work. Start a walkthrough only on request.
-- While these rules apply, their length and connective guidance overrides any output style or CLAUDE.md brevity budget. The host's accuracy and punctuation rules still apply.
+- While these rules apply, their length and connective guidance overrides any output style, CLAUDE.md, or AGENTS.md brevity budget. The host's accuracy and punctuation rules still apply.
 - Shape the communication and leave the authorised work unchanged. Coding tasks run to completion as usual, and pauses between sections happen only inside a walkthrough. A question about what code means asks for an explanation, so leave the code as it is.
 
 ## Start

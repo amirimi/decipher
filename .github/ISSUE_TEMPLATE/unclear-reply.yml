@@ -1,0 +1,34 @@
+name: Reply still unclear
+description: Share a reply that decipher left hard to follow
+title: "Unclear reply: "
+labels: ["unclear-reply"]
+body:
+  - type: markdown
+    attributes:
+      value: Remove secrets, internal hostnames, and anything else you would not post publicly before you paste.
+  - type: textarea
+    id: source
+    attributes:
+      label: Original text
+      description: The agent reply, report, or passage you asked decipher to explain.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: reply
+    attributes:
+      label: decipher's reply
+    validations:
+      required: true
+  - type: textarea
+    id: unclear
+    attributes:
+      label: What stayed unclear
+      description: The sentence, term, or step where you lost the thread.
+    validations:
+      required: true
+  - type: input
+    id: client
+    attributes:
+      label: Client and version
+      placeholder: Claude Code 2.1.284

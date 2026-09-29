@@ -1,0 +1,14 @@
+{
+  "name": "decipher",
+  "displayName": "Decipher",
+  "version": "1.0.0",
+  "description": "Turns dense agent output into plain, precise English, with paced walkthroughs of long PRs, reports, and specs.",
+  "author": {
+    "name": "Amir Karimi",
+    "url": "https://github.com/amk9978"
+  },
+  "homepage": "https://github.com/amk9978/decipher",
+  "repository": "https://github.com/amk9978/decipher",
+  "license": "MIT",
+  "keywords": ["explain", "plain-english", "readability", "walkthrough", "technical-writing", "code-explanation"]
+}

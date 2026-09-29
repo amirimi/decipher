@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>decipher hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --base: #faf4ed;
+    --surface: #fffaf3;
+    --overlay: #f2e9e1;
+    --muted: #9893a5;
+    --subtle: #797593;
+    --text: #575279;
+    --love: #b4637a;
+    --pine: #286983;
+    --iris: #907aa9;
+    --rose: #d7827e;
+    --line: #dfdad9;
+    --mark: #f4ede8;
+  }
+  :root[data-theme="dark"] {
+    --base: #191724;
+    --surface: #1f1d2e;
+    --overlay: #26233a;
+    --muted: #6e6a86;
+    --subtle: #908caa;
+    --text: #e0def4;
+    --love: #eb6f92;
+    --pine: #9ccfd8;
+    --iris: #c4a7e7;
+    --rose: #ebbcba;
+    --line: #403d52;
+    --mark: #2a2837;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 880px; height: 400px; background: var(--base); }
+  body {
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 1fr 44px 1.15fr;
+    align-items: stretch;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--love); }
+  .after .dot { background: var(--pine); }
+  .dense {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+  .dense .jargon { color: var(--love); }
+  .note {
+    margin-top: auto;
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--iris);
+    font-size: 22px;
+  }
+  .plain { font-size: 13.5px; line-height: 1.6; display: flex; flex-direction: column; gap: 11px; }
+  .plain h3 { font-size: 13.5px; font-weight: 700; }
+  .plain ol { padding-left: 18px; }
+  .plain .term { font-weight: 600; color: var(--pine); }
+  .plain .verified {
+    background: var(--mark);
+    border-left: 3px solid var(--iris);
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+  .fade { color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="card before">
+    <div class="label"><span class="dot"></span>Agent reply</div>
+    <p class="dense">Root cause: reconciler <span class="jargon">watch cache</span> went stale after <span class="jargon">informer resync</span> was bumped to 0, so the <span class="jargon">lease-holder</span> never saw the CR update and the <span class="jargon">finalizer</span> blocked GC. Patched resync back to 10m + explicit requeue on Conflict. 31/31 green. Webhook still double-admits on HA (2 replicas, no leader gate), out of scope, tracked in #412.</p>
+    <p class="note">Undefined terms, no order of events, and a test claim nobody checked.</p>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="card after">
+    <div class="label"><span class="dot"></span>After decipher</div>
+    <div class="plain">
+      <p>Deleted custom resources got stuck because the controller stopped re-checking objects after a missed update. The fix turns periodic re-checking back on and adds a retry. A separate webhook bug is still open.</p>
+      <h3>What broke, in order</h3>
+      <ol>
+        <li>The <span class="term">informer</span>'s resync period was set to 0. The informer is the client-go component that keeps a local copy of the custom resources and passes changes to the controller. <span class="fade">&hellip;</span></li>
+      </ol>
+      <p class="verified">The report says all 31 tests pass. I have not run them.</p>
+    </div>
+  </div>
+<script>
+  const theme = new URLSearchParams(location.search).get("theme");
+  if (theme) document.documentElement.dataset.theme = theme;
+</script>
+</body>
+</html>

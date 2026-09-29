@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>decipher social preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --base: #191724;
+    --surface: #1f1d2e;
+    --muted: #6e6a86;
+    --subtle: #908caa;
+    --text: #e0def4;
+    --love: #eb6f92;
+    --pine: #9ccfd8;
+    --iris: #c4a7e7;
+    --gold: #f6c177;
+    --line: #403d52;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; background: var(--base); }
+  body {
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    padding: 72px 80px;
+    display: grid;
+    grid-template-columns: 1fr 470px;
+    gap: 64px;
+    align-items: center;
+  }
+  .brand { display: flex; flex-direction: column; gap: 26px; }
+  .wordmark {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 88px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .wordmark .cursor { color: var(--iris); }
+  .tagline { font-size: 34px; font-weight: 600; line-height: 1.25; }
+  .sub { font-size: 21px; color: var(--subtle); line-height: 1.45; }
+  .stack { display: flex; flex-direction: column; gap: 18px; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 22px 24px;
+  }
+  .label {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--subtle);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--love); }
+  .after .dot { background: var(--pine); }
+  .dense { font-family: "JetBrains Mono", monospace; font-size: 15px; line-height: 1.65; }
+  .dense .jargon { color: var(--love); }
+  .plain { font-size: 17px; line-height: 1.55; }
+  .plain .term { color: var(--pine); font-weight: 600; }
+  .arrow { text-align: center; color: var(--iris); font-size: 26px; line-height: 1; }
+</style>
+</head>
+<body>
+  <div class="brand">
+    <div class="wordmark">decipher<span class="cursor">_</span></div>
+    <div class="tagline">Plain English for dense<br>agent output.</div>
+    <div class="sub">A Claude Code plugin and Agent Skill that explains replies, PRs, and reports one clear step at a time.</div>
+  </div>
+  <div class="stack">
+    <div class="card">
+      <div class="label"><span class="dot"></span>Agent reply</div>
+      <p class="dense">Root cause: <span class="jargon">informer resync</span> bumped to 0, so the <span class="jargon">lease-holder</span> never saw the CR update and the <span class="jargon">finalizer</span> blocked GC. 31/31 green.</p>
+    </div>
+    <div class="arrow">&darr;</div>
+    <div class="card after">
+      <div class="label"><span class="dot"></span>After decipher</div>
+      <p class="plain">Deleted custom resources got stuck because the controller stopped re-checking objects after a missed update. The fix turns periodic re-checking back on and adds a retry.</p>
+    </div>
+  </div>
+</body>
+</html>

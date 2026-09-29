@@ -1,10 +1,35 @@
 # decipher
 
-A Claude Code skill that turns dense agent output into plain, precise English. It explains one reply at a time, or walks through a long PR, report, or spec part by part with a bookmark that survives your questions.
+**Plain English for dense agent output.** decipher is a Claude Code plugin and Agent Skill that rewrites an agent's reply, PR, report, or spec so an experienced engineer can follow it on the first read. It keeps every identifier, number, and caveat.
+
+[![validate](https://github.com/amk9978/decipher/actions/workflows/validate.yml/badge.svg)](https://github.com/amk9978/decipher/actions/workflows/validate.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757.svg)](#install)
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png">
+  <img alt="A dense agent reply full of undefined terms on the left, and decipher's plain explanation of it on the right" src="assets/hero-light.png" width="880">
+</picture>
 
 ## Install
 
-Clone the repository and link both files into Claude Code.
+**Claude Code** gets the skill and the output style:
+
+```text
+/plugin marketplace add amk9978/claude-plugins
+/plugin install decipher@amk9978
+```
+
+**Other agents that read `SKILL.md`** get the skill:
+
+```bash
+npx skills add amk9978/decipher
+```
+
+Tested with Claude Code 2.1.284.
+
+<details>
+<summary>Install from a clone for live editing</summary>
 
 ```bash
 git clone https://github.com/amk9978/decipher ~/decipher
@@ -13,25 +38,39 @@ mkdir -p ~/.claude/output-styles
 ln -s ~/decipher/output-styles/decipher.md ~/.claude/output-styles/decipher.md
 ```
 
-Running `git pull` in `~/decipher` then updates both. To install only the skill, `npx skills add amk9978/decipher -g` also works. Both routes need read access to the repository while it is private.
+</details>
+
+## The problem
+
+Agent replies drift into shorthand. They use labels the agent invented, such as "Path B", and project terms nobody defined. They list files before saying what changed, and they report "31/31 green" without saying who ran the tests. A long report loses you by the third section, and a follow-up question loses your place.
+
+decipher fixes the reply you already have. It leads with the result, defines each term where it first appears, puts events in the order they happened, and keeps what the source claims apart from what anyone verified.
 
 ## Use
 
 Say one of these after a reply you could not follow.
 
-| You say | Decipher does |
+| You say | decipher does |
 |---|---|
 | simplify this, explain that again | Rewrites the latest reply, or a passage you name, in plain English |
 | walk me through a PR, report, or spec | Maps it into three to five parts and explains one part per turn |
 | continue, back, all at once, stop | Moves through a walkthrough |
 | I'm lost | Rebuilds the explanation from the goal with a different example |
 
-Every walkthrough turn ends with a footer that records where you paused, which of your questions are still open, and what comes next.
+Every walkthrough turn ends with a bookmark footer. Side questions leave the bookmark where it was, and your unanswered questions stay under **Open** until they are answered.
 
-For plain replies on every turn, select the output style in `~/.claude/settings.json`:
+```markdown
+**Paused at:** part 2 of 4, retry logic
+**Open:** why the lock is per-tenant (+1 more)
+**Next:** part 3 of 4, the migration
+```
+
+### Plain replies on every turn
+
+The plugin and the clone install also ship an output style that applies decipher's writing rules to every reply. Select it in `~/.claude/settings.json`. A plugin install names it `decipher:Decipher`, and a clone install names it `Decipher`.
 
 ```json
-"outputStyle": "Decipher"
+{ "outputStyle": "decipher:Decipher" }
 ```
 
 ## Example
@@ -79,7 +118,11 @@ The admission webhook is the service the API server calls to approve each reques
 
 ## How it works
 
-The skill holds every rule. The output style is a one-line switch that tells Claude to read the skill at the start of each session and again after compaction. While the rules apply, they override brevity budgets from other output styles and CLAUDE.md files. Accuracy and punctuation rules from the host still apply.
+The skill holds every rule. The output style is a short switch that tells Claude to load the skill at the start of each session and again after compaction. While the rules apply, they override brevity budgets from other output styles, `CLAUDE.md`, and `AGENTS.md`. Accuracy and punctuation rules from the host still apply.
+
+## Feedback
+
+Found a reply decipher left unclear? [Open an issue](https://github.com/amk9978/decipher/issues/new?template=unclear-reply.yml) with the original text, decipher's reply, and the point where you lost the thread. Real failures are how the rules improve.
 
 ## License
 
