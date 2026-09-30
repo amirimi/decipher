@@ -1,6 +1,6 @@
 # decipher
 
-**Plain English for dense agent output.** decipher is a Claude Code plugin and Agent Skill that rewrites an agent's reply, PR, report, or spec so an experienced engineer can follow it on the first read. It keeps every identifier, number, and caveat.
+**Plain English for dense agent output.** decipher is a Claude Code plugin and Agent Skill that translates an agent-written spec, or any other technical document, into plain English an experienced engineer can follow on the first read. It keeps every identifier, number, and caveat.
 
 [![validate](https://github.com/amk9978/decipher/actions/workflows/validate.yml/badge.svg)](https://github.com/amk9978/decipher/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -44,11 +44,15 @@ ln -s ~/decipher/output-styles/decipher.md ~/.claude/output-styles/decipher.md
 
 Agent replies drift into shorthand. They use labels the agent invented, such as "Path B", and project terms nobody defined. They list files before saying what changed, and they report "31/31 green" without saying who ran the tests. A long report loses you by the third section, and a follow-up question loses your place.
 
-decipher fixes the reply you already have. It leads with the result, defines each term where it first appears, puts events in the order they happened, and keeps what the source claims apart from what anyone verified.
+decipher fixes the reply you already have. Every explanation comes back in the same six sections (Bottom line, Terms, Needs you, How it works, What changes, Held back) and stays under about 400 words however long the source is, so you learn where to look. It defines each term before the text uses it, puts events in the order they happened, and keeps what the source claims apart from what anyone verified.
+
+## Why not just ask for shorter output?
+
+A concision rule in `CLAUDE.md` or a planning plugin changes what an agent writes next. decipher works on a document that already exists, including one a teammate, another tool, or an earlier session wrote. It rewrites that document for a reader who lost the thread. It defines the source's terms from the source, puts events in time order, separates what the document claims from what anyone verified, and keeps your place through a long read. The output gets shorter only because it leaves out what you do not need.
 
 ## Use
 
-Say one of these after a reply you could not follow.
+decipher works best on agent-written specs and design docs. It also handles PRs, reports, incident write-ups, READMEs, and agent replies. Say one of these after a document you could not follow.
 
 | You say | decipher does |
 |---|---|
@@ -118,7 +122,7 @@ The admission webhook is the service the API server calls to approve each reques
 
 ## How it works
 
-The skill holds every rule. The output style is a short switch that tells Claude to load the skill at the start of each session and again after compaction. While the rules apply, they override brevity budgets from other output styles, `CLAUDE.md`, and `AGENTS.md`. Accuracy and punctuation rules from the host still apply.
+The skill holds every rule. The output style is a short switch that tells Claude to load the skill at the start of each session and again after compaction. While the rules apply, the fixed format's limits replace brevity budgets from other output styles, `CLAUDE.md`, and `AGENTS.md`. Accuracy and punctuation rules from the host still apply.
 
 ## Feedback
 
