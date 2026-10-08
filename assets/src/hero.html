@@ -97,24 +97,37 @@
     border-radius: 4px;
   }
   .fade { color: var(--muted); }
+  body { grid-template-rows: 344px; }
+  .card { min-height: 0; overflow: hidden; }
+  .spec { font-size: 12px; line-height: 1.65; color: var(--subtle); position: relative; overflow: hidden; flex: 1; }
+  .spec h4 { font-size: 12.5px; color: var(--text); margin: 0 0 4px; }
+  .spec p { margin-bottom: 9px; }
+  .spec code { font-family: "JetBrains Mono", monospace; font-size: 11px; }
+  .spec::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px; background: linear-gradient(to bottom, transparent, var(--surface)); }
+  .gist { font-size: 13.5px; line-height: 1.55; padding: 10px 12px; border-radius: 8px; background: var(--mark); border-left: 3px solid var(--iris); }
+  .gist b, .plain b { font-weight: 700; }
+  .gist span { color: var(--pine); font-weight: 500; }
+  .count { margin-left: auto; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--muted); }
 </style>
 </head>
 <body>
   <div class="card before">
-    <div class="label"><span class="dot"></span>Agent reply</div>
-    <p class="dense">Root cause: reconciler <span class="jargon">watch cache</span> went stale after <span class="jargon">informer resync</span> was bumped to 0, so the <span class="jargon">lease-holder</span> never saw the CR update and the <span class="jargon">finalizer</span> blocked GC. Patched resync back to 10m + explicit requeue on Conflict. 31/31 green. Webhook still double-admits on HA (2 replicas, no leader gate), out of scope, tracked in #412.</p>
-    <p class="note">Undefined terms, no order of events, and a test claim nobody checked.</p>
+    <div class="label"><span class="dot"></span>Agent-written spec<span class="count">1,323 words</span></div>
+    <div class="spec">
+      <h4>Goal</h4>
+      <p>A LiCode link shared in Slack, LinkedIn, X, WhatsApp, iMessage or Discord unfurls into a card with the LiCode mark, a title and one line of description. A link to a case or a track shows that case's question or that track's destination, so a shared challenge reads as a challenge.</p>
+      <h4>Sequence</h4>
+      <p>Someone pastes a LiCode link into a chat or a post. That platform's crawler fetches the page without running JavaScript and reads the Open Graph and Twitter card tags in the HTML <code>&lt;head&gt;</code>. It then downloads the image the tags name and caches the card, usually for days.</p>
+    </div>
   </div>
   <div class="arrow">&rarr;</div>
   <div class="card after">
-    <div class="label"><span class="dot"></span>After decipher</div>
+    <div class="label"><span class="dot"></span>After decipher<span class="count">402 words</span></div>
     <div class="plain">
-      <p>Deleted custom resources got stuck because the controller stopped re-checking objects after a missed update. The fix turns periodic re-checking back on and adds a retry. A separate webhook bug is still open.</p>
-      <h3>What broke, in order</h3>
-      <ol>
-        <li>The <span class="term">informer</span>'s resync period was set to 0. The informer is the client-go component that keeps a local copy of the custom resources and passes changes to the controller. <span class="fade">&hellip;</span></li>
-      </ol>
-      <p class="verified">The report says all 31 tests pass. I have not run them.</p>
+      <p class="gist"><b>Gist.</b> <span>shared links become cards, case question not answer, images drawn ahead and committed, browser tab icon, approval and previews pending</span></p>
+      <p><b>Bottom line.</b> The spec makes a shared LiCode link show a card with a picture, a title and one line of text, instead of a bare URL. Nothing is built yet, because it waits for your approval and for you to see image previews.</p>
+      <p><b>Needs you.</b> Cloudflare's bot protection might block the crawlers without any error showing.</p>
+      <p class="fade">Terms, How it works, What changes, Held back &hellip;</p>
     </div>
   </div>
 <script>

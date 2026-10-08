@@ -8,7 +8,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png">
-  <img alt="A dense agent reply full of undefined terms on the left, and decipher's plain explanation of it on the right" src="assets/hero-light.png" width="880">
+  <img alt="A 1,323-word agent-written spec on the left, and the opening of decipher's 402-word reply on the right, starting with its Gist line" src="assets/hero-light.png" width="880">
 </picture>
 
 ## Install
@@ -79,44 +79,50 @@ The plugin and the clone install also ship an output style that applies decipher
 
 ## Example
 
-Input from a real `claude -p` run:
+A real run on a 1,323-word agent-written spec for link previews in LiCode, a code-review practice app. The reply is 402 words.
 
 ```text
-Simplify this, I'm lost:
-
-Root cause: reconciler watch cache went stale after informer resync was bumped to 0, so the lease-holder never saw the CR update and the finalizer blocked GC. Patched resync back to 10m + explicit requeue on Conflict. 31/31 green. Webhook still double-admits on HA (2 replicas, no leader gate), out of scope, tracked in #412.
+/decipher specs/link-previews.md
 ```
 
 Opening of the reply:
 
-> Deleted custom resources got stuck because the controller stopped re-checking objects after a missed update. The fix turns periodic re-checking back on and adds a retry. A separate webhook bug is still open.
+**Gist.** shared links become cards, case question not answer, images drawn ahead and committed, browser tab icon, approval and previews pending
+
+**Bottom line.** The spec makes a shared LiCode link show a card with a picture, a title and one line of text, instead of a bare URL. Nothing is built yet, because it waits for your approval and for you to see image previews. The only design choice that isn't routine is drawing the card images ahead of time.
 
 <details>
 <summary>Full reply</summary>
 
-Deleted custom resources got stuck because the controller stopped re-checking objects after a missed update. The fix turns periodic re-checking back on and adds a retry. A separate webhook bug is still open.
+**Gist.** shared links become cards, case question not answer, images drawn ahead and committed, browser tab icon, approval and previews pending
 
-**What broke, in order**
+**Bottom line.** The spec makes a shared LiCode link show a card with a picture, a title and one line of text, instead of a bare URL. Nothing is built yet, because it waits for your approval and for you to see image previews. The only design choice that isn't routine is drawing the card images ahead of time.
 
-1. The informer's resync period was set to 0. The informer is the client-go component that keeps a local copy of the custom resources and passes changes to the controller. Resync makes the controller re-check every object on a timer, even when nothing new arrives, and a period of 0 turns it off.
-2. The lease-holder missed an update to a custom resource. The lease-holder is the one controller replica that holds the leader lock and does the actual work. With resync off, nothing ever made it look at that object again.
-3. The object had a finalizer. A finalizer is a marker that blocks deletion until the controller finishes its cleanup and removes the marker. The controller never ran that cleanup, so the finalizer stayed on.
-4. Kubernetes garbage collection could not delete the object while the finalizer was there. I infer it sat in the Terminating state.
+**Terms.**
+- **card**: the box a chat or social app shows for a pasted link
+- **crawler**: the program Slack, LinkedIn or X sends to read a pasted page
+- **manifest**: a file recording the text each committed image was drawn from
 
-**The fix**
+**Needs you.**
+- Approve the spec, or tell me what to change.
+- Say whether I should render previews of the site card, a case card, a track card and the tab icon first.
+- After deploy, Cloudflare's bot protection might block the crawlers without any error showing, so the PR will record checks in each platform's inspector.
 
-- Resync is back to 10 minutes. The controller now re-checks every object at least that often.
-- Some writes fail with a Conflict error. The API server returns that error when the object changed after the controller read it. The controller now puts the object back in its queue so it tries again.
+**How it works.**
+1. A person pastes a LiCode link, and the app's crawler fetches that page without running JavaScript.
+2. LiCode's server adds the card details to the page it sends, because React's tags would arrive too late for a crawler.
+3. The server picks the details from the address. A case link gets its question, a track link gets its destination, and every other page gets the site card.
+4. A card shows only what the page shows before anyone answers, so it never reveals an answer, outcome or sender.
+5. The server can't draw images, because production has no browser or image library, so a script draws every image ahead of time.
+6. A test fails if a question changes after its image was drawn, which forces a redraw before release.
 
-The report says all 31 tests pass. I have not run them.
+**What changes.**
+- Links unfurl everywhere, and a shared case reads as a challenge, which the share buttons spec depends on.
+- Apps cache a card for about a week, so a changed image ships under a new versioned filename.
+- Images stay under 300 KB, because WhatsApp drops larger ones.
+- The browser tab gets an icon, and /favicon.ico stops returning the page's HTML.
 
-**A caveat on the diagnosis (my reading, not the report's)**
-
-In client-go, resync replays the local copy and does not fetch fresh data from the API server. Resync alone therefore cannot repair a local copy that is out of date. It only retries objects the controller skipped. The Conflict retry is more likely the part that handles a controller acting on an old version. Check the phrase "watch cache went stale" before it goes into a postmortem.
-
-**Still open**
-
-The admission webhook is the service the API server calls to approve each request. It runs as 2 replicas for high availability, and it has no leader election to pick one of them. The report says this makes it "double-admit" but does not say what harm that causes. This fix leaves it alone, and #412 tracks it.
+**Held back.** The exact card text for each page kind, the image layout, escaping rules, the no-public-address local behaviour and the file list.
 
 </details>
 
