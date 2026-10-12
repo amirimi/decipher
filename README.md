@@ -11,7 +11,7 @@
 
 **Self-check.** You approved your agent's last spec. Could you name its riskiest assumption without opening it?
 
-[![validate](https://github.com/amk9978/decipher/actions/workflows/validate.yml/badge.svg)](https://github.com/amk9978/decipher/actions/workflows/validate.yml)
+[![validate](https://github.com/amirimi/decipher/actions/workflows/validate.yml/badge.svg)](https://github.com/amirimi/decipher/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757.svg)](#install)
 
@@ -25,14 +25,14 @@
 **Claude Code** gets the skill and an always-on output style.
 
 ```text
-/plugin marketplace add amk9978/claude-plugins
-/plugin install decipher@amk9978
+/plugin marketplace add amirimi/claude-plugins
+/plugin install decipher@amirimi
 ```
 
 **Any other agent that reads `SKILL.md`** gets the skill.
 
 ```bash
-npx skills add amk9978/decipher
+npx skills add amirimi/decipher
 ```
 
 Tested with Claude Code 2.1.284.
@@ -41,7 +41,7 @@ Tested with Claude Code 2.1.284.
 <summary>Install from a clone for live editing</summary>
 
 ```bash
-git clone https://github.com/amk9978/decipher ~/decipher
+git clone https://github.com/amirimi/decipher ~/decipher
 ln -s ~/decipher/skills/decipher ~/.claude/skills/decipher
 mkdir -p ~/.claude/output-styles
 ln -s ~/decipher/output-styles/decipher.md ~/.claude/output-styles/decipher.md
@@ -136,7 +136,7 @@ While decipher's rules apply, its own limits replace brevity budgets from other 
 
 ## Feedback
 
-decipher left you lost? That's a bug. [Open an issue](https://github.com/amk9978/decipher/issues/new?template=unclear-reply.yml) with the original text and the reply.
+decipher left you lost? That's a bug. [Open an issue](https://github.com/amirimi/decipher/issues/new?template=unclear-reply.yml) with the original text and the reply.
 
 ## License
 
