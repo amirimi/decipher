@@ -47,6 +47,8 @@ Every explanation uses these sections in this order and under these labels, so t
 **Needs you.**
 - A decision, blocker, risk, or open question that changes what the reader does
 
+**Self-check.** One question, built from the source's own premise, that the reader answers to themselves.
+
 **How it works.**
 1. One step per line, in the order things happen
 
@@ -62,6 +64,7 @@ Every explanation uses these sections in this order and under these labels, so t
 | Bottom line | 3 sentences. Name any blocker the source establishes here. |
 | Terms | 5 terms, only those the later sections use and the reader may not know |
 | Needs you | 5 bullets of one sentence each, most consequential first |
+| Self-check | 1 question |
 | How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour. |
 | What changes | 4 bullets of one sentence each |
 | Held back | 1 line |
@@ -76,6 +79,17 @@ The Gist lets the reader predict the rest before reading it. Write it to these r
 - Drop any word that would fit almost any document, such as "security", "architecture", or "improvements".
 
 A reader who sees only the Gist should be able to say what changes and what it costs.
+
+The Self-check keeps the reader in the loop, so they never approve what they no longer follow. It serves the reader alone. Open questions and anything you need from the user belong in Needs you. Write it to these rules:
+
+- Build it from the source itself, from an assumption the source rests on or the context that makes its main decision right. Choose the premise the whole document depends on over a detail.
+- State that premise in the question, so the reader can answer from understanding the matter without scrolling back.
+- Ask for a position, such as whether a decision still holds when its premise changes, what an assumption costs if it turns out wrong, or whether the premise is true of the reader's own system. A reader who follows the matter answers in a sentence, and a reader on autopilot cannot answer at all.
+- Keep the answer out of the reply. A question that the Gist or any section answers tests recall.
+- Name an assumption the source leaves unstated only when its main decision visibly depends on it, and say in the question that the source leaves it unstated.
+- Shape each question to its source, and never reuse the form of an earlier Self-check.
+- Give no answer and expect no reply. A reader who cannot answer has lost the thread and should step back, for example by asking for a walkthrough.
+- Omit it when the reader has nothing to approve or act on, such as when the source is a README.
 
 The sections fit any technical document. What two of them hold depends on the source.
 
@@ -105,11 +119,14 @@ Fixed. Drift gate was short-circuiting on the cached plan, swapped to a fresh `p
 **Needs you.**
 - Two tenants deploying the same shared stack can still overwrite each other, because the lock only serialises runs within one tenant.
 
+
 **How it works.**
 1. Before, the drift check reused the preview saved by the previous run.
 2. A stack that drifted after that run therefore passed the drift check.
 3. Now every run takes a fresh preview, so it catches drift since the last run.
 ```
+
+The example leaves out the Self-check so that no wording of one becomes a template.
 
 ## Compress
 
@@ -125,7 +142,7 @@ Map the material, explain one part, answer questions, then resume at the bookmar
 
 1. Open with Gist, Bottom line, Terms, and Needs you from the fixed format, then a numbered map of three to five meaningful parts. Never imply that an unexplained part was reviewed or understood.
 2. Explain the first relevant part in at most 150 words. Define any new term in place. Keep a mechanism and its essential caveat together.
-3. Stop at a natural boundary and end with the bookmark footer. Let the user ask, jump, or continue. Skip comprehension checks and requests for confirmation.
+3. Stop at a natural boundary and end with the bookmark footer. Let the user ask, jump, or continue. Skip generic comprehension checks and requests for confirmation.
 4. Respond to the commands in the table below.
 
 End every walkthrough turn with the footer, detours included. The footer is the only record of progress, so update it on every turn. Omit an empty field. List only questions the user actually asked under **Open**. When more than two are open, show the nearest two and the count of the rest.
@@ -171,6 +188,7 @@ Accept natural variants of each command.
 ## Check before replying
 
 - Does the reply open with a Gist of words only, from which a reader could say what changes and what it costs?
+- Does the Self-check rest on the source's own premise, keep its answer out of the reply, and ask for a position a reader on autopilot cannot take?
 - Does the reply use the fixed sections in order, within their limits and under about 400 words?
 - Is every sentence a full sentence of about 20 words or fewer, with an actor as its subject?
 - Can the reader say what happened, why, and what follows from Bottom line and Needs you alone?

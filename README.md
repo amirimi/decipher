@@ -44,7 +44,9 @@ ln -s ~/decipher/output-styles/decipher.md ~/.claude/output-styles/decipher.md
 
 Agent replies drift into shorthand. They use labels the agent invented, such as "Path B", and project terms nobody defined. They list files before saying what changed, and they report "31/31 green" without saying who ran the tests. A long report loses you by the third section, and a follow-up question loses your place.
 
-decipher fixes the reply you already have. Every explanation opens with a Gist, a few word phrases that carry the whole idea, and then the same six sections (Bottom line, Terms, Needs you, How it works, What changes, Held back). It stays under about 400 words however long the source is, so you learn where to look. It defines each term before the text uses it, puts events in the order they happened, and keeps what the source claims apart from what anyone verified.
+decipher fixes the reply you already have. Every explanation opens with a Gist, a few word phrases that carry the whole idea, and then the same fixed sections (Bottom line, Terms, Needs you, Self-check, How it works, What changes, Held back). The fixed layout teaches you where to look, and the reply stays under about 400 words however long the source is. decipher defines each term before the text uses it, puts events in the order they happened, and keeps what the source claims apart from what anyone verified.
+
+The Self-check is one question built from the document's own premise, which you answer to yourself. It asks for your judgment on the matter, so you can't answer it by scrolling back. If you can't answer it, you have stopped following, and that is the moment to step back before you approve anything.
 
 ## Why not just ask for shorter output?
 
