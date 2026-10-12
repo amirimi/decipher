@@ -27,7 +27,7 @@ The reader is an experienced engineer who lost the thread. Plain language is the
 2. Make a person, component, or system the subject of each sentence and give it an active verb. Write "the server rejects the run" in place of "rejected at prepare" or "rejection occurs".
 3. Use everyday words for what happens. Keep the source's exact names only for things the reader will meet again or search for, and translate a status code or internal name into its effect, such as "the server rejects the run (409)". Avoid stacked abstract nouns and invented labels such as "Path B" or "the shim".
 4. Connect a sentence to the one before whenever the link is not obvious, using "because", "so", or "then". Skip a consequence a senior engineer derives at once.
-5. Define each project term the reply uses more than once under Terms. When a term appears only once, state its meaning in place and drop the name. Keep one name for each thing throughout. Leave basic programming unexplained unless the user asks.
+5. Explain jargon in plain words where it appears, and list a term under Terms only by the rule for that section. Keep one name for each thing throughout. Leave basic programming unexplained unless the user asks.
 6. For a process, name the actors first and then the steps in order. For a change, give the previous behaviour, the failure, the new behaviour, and its consequence before any files or classes.
 7. Use a concrete example only when an abstraction carries too much meaning, and label a hypothetical one as hypothetical.
 8. Leave out announcements, filler, and closing recaps.
@@ -36,18 +36,20 @@ The reader is an experienced engineer who lost the thread. Plain language is the
 
 Every explanation uses these sections in this order and under these labels, so the reader learns where to look. Omit a section that has nothing to say. Never rename, reorder, or add a section.
 
+The Gist, Bottom line, and Self-check form the head. Many readers stop after the head, so it must carry the whole idea in plain words and lean on no term that only Terms explains.
+
 ```markdown
 **Gist.** four to six short word phrases, separated by commas
 
 **Bottom line.** What the source does or proposes, its status, and what backs it.
+
+**Self-check.** One question, built from the source's own premise, that the reader answers to themselves.
 
 **Terms.**
 - **term**: its meaning in about a dozen words
 
 **Needs you.**
 - A decision, blocker, risk, or open question that changes what the reader does
-
-**Self-check.** One question, built from the source's own premise, that the reader answers to themselves.
 
 **How it works.**
 1. One step per line, in the order things happen
@@ -62,9 +64,9 @@ Every explanation uses these sections in this order and under these labels, so t
 |---|---|
 | Gist | 4 to 6 phrases of 1 to 4 words each |
 | Bottom line | 3 sentences. Name any blocker the source establishes here. |
-| Terms | 5 terms, only those the later sections use and the reader may not know |
-| Needs you | 5 bullets of one sentence each, most consequential first |
 | Self-check | 1 question |
+| Terms | None in most replies. Up to 5 when the source is heavy with jargon. |
+| Needs you | 5 bullets of one sentence each, most consequential first |
 | How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour. |
 | What changes | 4 bullets of one sentence each |
 | Held back | 1 line |
@@ -91,6 +93,8 @@ The Self-check keeps the reader in the loop, so they never approve what they no 
 - Give no answer and expect no reply. A reader who cannot answer has lost the thread and should step back, for example by asking for a walkthrough.
 - Omit it when the reader has nothing to approve or act on, such as when the source is a README.
 
+Most replies need no Terms, because plain words in place explain most jargon. Add Terms when the reply would otherwise leave two or more project terms that an experienced engineer outside the project could not understand from context. List only those terms, and give none to a term already explained in place.
+
 The sections fit any technical document. What two of them hold depends on the source.
 
 | Source | How it works | What changes |
@@ -100,7 +104,7 @@ The sections fit any technical document. What two of them hold depends on the so
 | Incident write-up | Events in the order they happened | Follow-up actions and their owners |
 | README, runbook, or reference doc | How the reader uses it, in order | Omit unless the document describes a change |
 
-The whole reply stays under about 400 words, whatever the source's length. A longer source gets a longer Held back line and the same size body. Depth comes from a walkthrough or from a question about a held-back part. A short source, such as a one-paragraph agent reply, usually needs only Bottom line, Terms, and How it works.
+The whole reply stays under about 400 words, whatever the source's length. A longer source gets a longer Held back line and the same size body. Depth comes from a walkthrough or from a question about a held-back part. A short source, such as a one-paragraph agent reply, usually needs only the head and How it works.
 
 A hypothetical agent report, before and after.
 
@@ -111,22 +115,18 @@ Fixed. Drift gate was short-circuiting on the cached plan, swapped to a fresh `p
 ```markdown
 **Gist.** drift check, fresh preview every stack, tests reported not verified, shared stacks still collide
 
-**Bottom line.** The drift check now runs a fresh `pulumi preview` for every stack. The report says all 14 tests pass, and I have not run them.
-
-**Terms.**
-- **drift check**: the CI step that fails when live infrastructure differs from the code
+**Bottom line.** The CI step that fails when live infrastructure differs from the code now runs a fresh `pulumi preview` for every stack. The report says all 14 tests pass, and I have not run them.
 
 **Needs you.**
 - Two tenants deploying the same shared stack can still overwrite each other, because the lock only serialises runs within one tenant.
 
-
 **How it works.**
-1. Before, the drift check reused the preview saved by the previous run.
-2. A stack that drifted after that run therefore passed the drift check.
+1. Before, the check reused the preview saved by the previous run.
+2. A stack that drifted after that run therefore passed the check.
 3. Now every run takes a fresh preview, so it catches drift since the last run.
 ```
 
-The example leaves out the Self-check so that no wording of one becomes a template.
+The example leaves out the Self-check so that no wording of one becomes a template. It needs no Terms, because the Bottom line explains its one project term in place.
 
 ## Compress
 
@@ -140,7 +140,7 @@ The example leaves out the Self-check so that no wording of one becomes a templa
 
 Map the material, explain one part, answer questions, then resume at the bookmark.
 
-1. Open with Gist, Bottom line, Terms, and Needs you from the fixed format, then a numbered map of three to five meaningful parts. Never imply that an unexplained part was reviewed or understood.
+1. Open with the head, then Terms if its rule applies, then Needs you, then a numbered map of three to five meaningful parts. Never imply that an unexplained part was reviewed or understood.
 2. Explain the first relevant part in at most 150 words. Define any new term in place. Keep a mechanism and its essential caveat together.
 3. Stop at a natural boundary and end with the bookmark footer. Let the user ask, jump, or continue. Skip generic comprehension checks and requests for confirmation.
 4. Respond to the commands in the table below.
@@ -191,8 +191,8 @@ Accept natural variants of each command.
 - Does the Self-check rest on the source's own premise, keep its answer out of the reply, and ask for a position a reader on autopilot cannot take?
 - Does the reply use the fixed sections in order, within their limits and under about 400 words?
 - Is every sentence a full sentence of about 20 words or fewer, with an actor as its subject?
-- Can the reader say what happened, why, and what follows from Bottom line and Needs you alone?
-- Is every project term the reply uses defined under Terms or in place?
+- Does the head alone carry the whole idea in plain words, so a reader who stops after the Self-check knows what the source does and whether they still follow?
+- Would an outsider still meet two or more unexplained project terms? If so, are those terms under Terms, and only those?
 - Did compressing remove a condition that changes the meaning?
 - Would deleting any sentence lose a fact the reader needs? If not, delete it.
 - During a walkthrough, does the reply end with a current footer?
