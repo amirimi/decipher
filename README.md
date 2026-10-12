@@ -1,6 +1,11 @@
-# decipher
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.png">
+    <img alt="decipher. Plain English for dense agent output." src="assets/banner-light.png" width="100%">
+  </picture>
+</p>
 
-**Plain English for dense agent output.** decipher is a Claude Code plugin and Agent Skill that translates an agent-written spec, or any other technical document, into plain English an experienced engineer can follow on the first read. It keeps every identifier, number, and caveat.
+decipher is a Claude Code plugin and Agent Skill that translates an agent-written spec, or any other technical document, into plain English an experienced engineer can follow on the first read. It keeps every identifier, number, and caveat.
 
 [![validate](https://github.com/amk9978/decipher/actions/workflows/validate.yml/badge.svg)](https://github.com/amk9978/decipher/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

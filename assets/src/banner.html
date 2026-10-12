@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>decipher banner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --base: #faf4ed;
+    --surface: #fffaf3;
+    --overlay: #f2e9e1;
+    --muted: #9893a5;
+    --subtle: #797593;
+    --text: #575279;
+    --pine: #286983;
+    --iris: #907aa9;
+    --line: #dfdad9;
+    --texture: 0.05;
+  }
+  :root[data-theme="dark"] {
+    --base: #191724;
+    --surface: #1f1d2e;
+    --overlay: #2a273f;
+    --muted: #6e6a86;
+    --subtle: #908caa;
+    --text: #e0def4;
+    --pine: #9ccfd8;
+    --iris: #c4a7e7;
+    --line: #403d52;
+    --texture: 0.06;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 320px; background: var(--base); overflow: hidden; }
+  body {
+    position: relative;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    padding: 0 64px;
+    display: grid;
+    grid-template-columns: 1fr 548px;
+    gap: 56px;
+    align-items: center;
+  }
+  .texture {
+    position: absolute;
+    inset: 0;
+    padding: 18px 0 0 40px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 13px;
+    line-height: 26px;
+    white-space: nowrap;
+    color: var(--text);
+    opacity: var(--texture);
+    filter: blur(0.5px);
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 18%, transparent 46%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 18%, transparent 46%);
+    pointer-events: none;
+  }
+  .brand { position: relative; display: flex; flex-direction: column; gap: 18px; }
+  .wordmark {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 92px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .cursor { color: var(--iris); }
+  .tagline { font-size: 25px; font-weight: 600; color: var(--subtle); }
+  .head {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .row { display: flex; align-items: center; gap: 10px; font-size: 16px; }
+  .row b { font-weight: 700; white-space: nowrap; }
+  .gist { display: block; font-size: 17px; line-height: 1.5; padding-left: 14px; border-left: 3px solid var(--iris); }
+  .gist span { color: var(--pine); font-weight: 500; }
+  .gist span span { white-space: nowrap; }
+  .ghost b { color: var(--muted); }
+  .bar { display: inline-block; height: 9px; border-radius: 5px; background: var(--overlay); }
+  .q { color: var(--iris); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div class="texture">
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race<br>
+    requeue on Conflict, webhook double-admits on HA, no leader gate, out of scope, tracked in #412<br>
+    forced command under restrict, docker group root-equivalent, bundle over stdin, egress proxy allowlist<br>
+    og:image prerendered, manifest drift fails test, crawler skips JavaScript, versioned filename busts cache<br>
+    observation schema, apply recomposes script, runtime pinned, kept record reproduces natively, shim restored<br>
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race
+  </div>
+  <div class="brand">
+    <div class="wordmark">decipher<span class="cursor">_</span></div>
+    <div class="tagline">Plain English for dense agent output.</div>
+  </div>
+  <div class="head">
+    <div class="row gist"><b>Gist.</b> <span><span>dense agent specs,</span> <span>gist first,</span> <span>plain English after,</span> <span>one self-check,</span> <span>every caveat kept</span></span></div>
+    <div class="row ghost"><b>Bottom line.</b> <i class="bar" style="width: 72%"></i></div>
+    <div class="row ghost"><b>Self-check.</b> <i class="bar" style="width: 52%"></i><span class="q">?</span></div>
+  </div>
+<script>
+  const theme = new URLSearchParams(location.search).get("theme");
+  if (theme) document.documentElement.dataset.theme = theme;
+</script>
+</body>
+</html>

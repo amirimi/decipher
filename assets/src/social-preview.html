@@ -5,85 +5,109 @@
 <title>decipher social preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=block" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=block" rel="stylesheet">
 <style>
   :root {
     --base: #191724;
     --surface: #1f1d2e;
+    --overlay: #2a273f;
     --muted: #6e6a86;
     --subtle: #908caa;
     --text: #e0def4;
-    --love: #eb6f92;
     --pine: #9ccfd8;
     --iris: #c4a7e7;
-    --gold: #f6c177;
     --line: #403d52;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1280px; height: 640px; background: var(--base); }
+  html, body { width: 1280px; height: 640px; background: var(--base); overflow: hidden; }
   body {
+    position: relative;
     font-family: "Inter", sans-serif;
     color: var(--text);
-    padding: 72px 80px;
+    padding: 0 76px;
     display: grid;
-    grid-template-columns: 1fr 470px;
-    gap: 64px;
+    grid-template-columns: auto 480px;
+    gap: 48px;
     align-items: center;
   }
-  .brand { display: flex; flex-direction: column; gap: 26px; }
+  .texture {
+    position: absolute;
+    inset: 0;
+    padding: 22px 0 0 44px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    line-height: 30px;
+    white-space: nowrap;
+    color: var(--text);
+    opacity: 0.045;
+    filter: blur(0.5px);
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 18%, transparent 48%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 18%, transparent 48%);
+    pointer-events: none;
+  }
+  .brand { position: relative; display: flex; flex-direction: column; gap: 24px; }
   .wordmark {
     font-family: "JetBrains Mono", monospace;
     font-weight: 700;
-    font-size: 88px;
+    font-size: 104px;
     letter-spacing: -0.02em;
     line-height: 1;
   }
-  .wordmark .cursor { color: var(--iris); }
-  .tagline { font-size: 34px; font-weight: 600; line-height: 1.25; }
-  .sub { font-size: 21px; color: var(--subtle); line-height: 1.45; }
-  .stack { display: flex; flex-direction: column; gap: 18px; }
-  .card {
+  .cursor { color: var(--iris); }
+  .tagline { font-size: 36px; font-weight: 600; line-height: 1.25; }
+  .sub { font-size: 21px; color: var(--subtle); }
+  .head {
+    position: relative;
     background: var(--surface);
     border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 22px 24px;
-  }
-  .label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--subtle);
-    margin-bottom: 12px;
+    border-radius: 20px;
+    padding: 32px 34px;
     display: flex;
-    align-items: center;
-    gap: 9px;
+    flex-direction: column;
+    gap: 22px;
   }
-  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--love); }
-  .after .dot { background: var(--pine); }
-  .dense { font-family: "JetBrains Mono", monospace; font-size: 15px; line-height: 1.65; }
-  .dense .jargon { color: var(--love); }
-  .plain { font-size: 17px; line-height: 1.55; }
-  .plain .term { color: var(--pine); font-weight: 600; }
-  .arrow { text-align: center; color: var(--iris); font-size: 26px; line-height: 1; }
+  .row { display: flex; align-items: center; gap: 12px; font-size: 20px; }
+  .row b { font-weight: 700; white-space: nowrap; }
+  .gist { display: block; font-size: 25px; line-height: 1.45; padding-left: 18px; border-left: 4px solid var(--iris); }
+  .gist span { color: var(--pine); font-weight: 500; }
+  .gist span span { white-space: nowrap; }
+  .ghost b { color: var(--muted); }
+  .bar { display: inline-block; height: 11px; border-radius: 6px; background: var(--overlay); }
+  .q { color: var(--iris); font-weight: 700; font-size: 22px; }
 </style>
 </head>
 <body>
+  <div class="texture">
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race<br>
+    requeue on Conflict, webhook double-admits on HA, no leader gate, out of scope, tracked in #412<br>
+    forced command under restrict, docker group root-equivalent, bundle over stdin, egress proxy allowlist<br>
+    og:image prerendered, manifest drift fails test, crawler skips JavaScript, versioned filename busts cache<br>
+    observation schema, apply recomposes script, runtime pinned, kept record reproduces natively, shim restored<br>
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race<br>
+    requeue on Conflict, webhook double-admits on HA, no leader gate, out of scope, tracked in #412<br>
+    forced command under restrict, docker group root-equivalent, bundle over stdin, egress proxy allowlist<br>
+    og:image prerendered, manifest drift fails test, crawler skips JavaScript, versioned filename busts cache<br>
+    observation schema, apply recomposes script, runtime pinned, kept record reproduces natively, shim restored<br>
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race
+  </div>
   <div class="brand">
     <div class="wordmark">decipher<span class="cursor">_</span></div>
     <div class="tagline">Plain English for dense<br>agent output.</div>
-    <div class="sub">A Claude Code plugin and Agent Skill that turns agent-written specs and other technical docs into plain English.</div>
+    <div class="sub">A Claude Code plugin and Agent Skill</div>
   </div>
-  <div class="stack">
-    <div class="card">
-      <div class="label"><span class="dot"></span>Agent-written spec</div>
-      <p class="dense">1,323 words of Goal, Sequence, card tables, <span class="jargon">og:image</span> rules, <span class="jargon">preview_for</span>, manifests and acceptance criteria.</p>
-    </div>
-    <div class="arrow">&darr;</div>
-    <div class="card after">
-      <div class="label"><span class="dot"></span>After decipher</div>
-      <p class="plain"><b>Gist.</b> <span class="term">shared links become cards, case question not answer, images drawn ahead and committed, browser tab icon, approval and previews pending</span></p>
-    </div>
+  <div class="head">
+    <div class="row gist"><b>Gist.</b> <span><span>dense agent specs,</span> <span>gist first,</span> <span>plain English after,</span> <span>one self-check,</span> <span>every caveat kept</span></span></div>
+    <div class="row ghost"><b>Bottom line.</b> <i class="bar" style="width: 70%"></i></div>
+    <div class="row ghost"><b>Self-check.</b> <i class="bar" style="width: 50%"></i><span class="q">?</span></div>
   </div>
 </body>
 </html>
