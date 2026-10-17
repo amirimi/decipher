@@ -1,5 +1,5 @@
 ---
-name: Decipher
+name: decipher
 description: Plain-language replies on every turn, using the decipher skill's writing rules
 keep-coding-instructions: true
 ---

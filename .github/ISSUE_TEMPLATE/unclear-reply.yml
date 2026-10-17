@@ -31,4 +31,4 @@ body:
     id: client
     attributes:
       label: Client and version
-      placeholder: Claude Code 2.1.284
+      placeholder: Claude Code 2.1.302

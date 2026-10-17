@@ -1,0 +1,18 @@
+{
+  "name": "decipher",
+  "owner": {
+    "name": "Amir Karimi",
+    "url": "https://github.com/amirimi"
+  },
+  "metadata": {
+    "description": "Rewrites agent-written specs, PRs, and reports into plain English, gist first, with one question that checks you still follow."
+  },
+  "plugins": [
+    {
+      "name": "decipher",
+      "source": "./",
+      "description": "Rewrites agent-written specs, PRs, and reports into plain English, gist first, with one question that checks you still follow.",
+      "category": "productivity"
+    }
+  ]
+}

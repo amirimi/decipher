@@ -25,8 +25,8 @@
 **Claude Code** gets the skill and an always-on output style.
 
 ```text
-/plugin marketplace add amirimi/claude-plugins
-/plugin install decipher@amirimi
+/plugin marketplace add amirimi/decipher
+/plugin install decipher@decipher
 ```
 
 **Any other agent that reads `SKILL.md`** gets the skill.
@@ -35,7 +35,7 @@
 npx skills add amirimi/decipher
 ```
 
-Tested with Claude Code 2.1.284.
+Tested with Claude Code 2.1.302.
 
 <details>
 <summary>Install from a clone for live editing</summary>
@@ -89,10 +89,10 @@ Go ahead. A concision rule shapes the next thing your agent writes. The 1,600-wo
 
 ## Always on
 
-The plugin also ships an output style that puts every reply in plain English. Select it in `~/.claude/settings.json`. A plugin install names it `decipher:Decipher`, and a clone install names it `Decipher`.
+The plugin also ships an output style that puts every reply in plain English. Select it in `~/.claude/settings.json`. A plugin install names it `decipher:decipher`, and a clone install names it `decipher`.
 
 ```json
-{ "outputStyle": "decipher:Decipher" }
+{ "outputStyle": "decipher:decipher" }
 ```
 
 While decipher's rules apply, its own limits replace brevity budgets from other output styles, `CLAUDE.md`, and `AGENTS.md`. Your accuracy and punctuation rules still win.

@@ -3,7 +3,7 @@ name: decipher
 description: Translate agent-written specs and design docs, and secondarily PRs, reports, incident write-ups, READMEs, and agent replies, into plain English for an engineer who lost the thread. Use when the user says "decipher", "simplify this", "explain that again", "walk me through", or "I'm lost", or when they struggle with dense prose or project terms. Answers in a fixed, skimmable format by default and gives a paced walkthrough with a bookmark footer on request.
 ---
 
-# Decipher
+# decipher
 
 Pick the source, write about it plainly, and answer in the fixed format or, on request, walk through it part by part. During a walkthrough, keep the bookmark footer current until the walkthrough ends.
 
