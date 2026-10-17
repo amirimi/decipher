@@ -29,25 +29,9 @@
 /plugin install decipher@decipher
 ```
 
-**Any other agent that reads `SKILL.md`** gets the skill.
-
-```bash
-npx skills add amirimi/decipher
-```
+**Any other agent that reads `SKILL.md`** gets the skill. [INSTALL.md](INSTALL.md) has its command and a clone install for live editing.
 
 Tested with Claude Code 2.1.302.
-
-<details>
-<summary>Install from a clone for live editing</summary>
-
-```bash
-git clone https://github.com/amirimi/decipher ~/decipher
-ln -s ~/decipher/skills/decipher ~/.claude/skills/decipher
-mkdir -p ~/.claude/output-styles
-ln -s ~/decipher/output-styles/decipher.md ~/.claude/output-styles/decipher.md
-```
-
-</details>
 
 ## Use
 

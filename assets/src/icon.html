@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>decipher icon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --base: #191724;
+    --text: #e0def4;
+    --iris: #c4a7e7;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1024px; height: 1024px; background: var(--base); overflow: hidden; }
+  body { display: grid; place-items: center; }
+  .mark {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 600px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--text);
+    transform: translate(-15px, -38px);
+  }
+  .cursor { color: var(--iris); }
+</style>
+</head>
+<body>
+  <div class="mark">d<span class="cursor">_</span></div>
+</body>
+</html>
