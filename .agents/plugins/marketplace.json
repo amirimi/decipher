@@ -1,0 +1,20 @@
+{
+  "name": "decipher",
+  "interface": {
+    "displayName": "decipher"
+  },
+  "plugins": [
+    {
+      "name": "decipher",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

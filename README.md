@@ -29,9 +29,9 @@
 /plugin install decipher@decipher
 ```
 
-**Any other agent that reads `SKILL.md`** gets the skill. [INSTALL.md](INSTALL.md) has its command and a clone install for live editing.
+**Codex, OpenCode, and Cursor** each have their own install in [INSTALL.md](INSTALL.md). So does any other agent that reads `SKILL.md`.
 
-Tested with Claude Code 2.1.302.
+Tested with Claude Code 2.1.302, Codex 0.149.1, OpenCode 1.19.3, and the Cursor CLI 2026.10.19.
 
 ## Use
 
@@ -40,6 +40,8 @@ Point it at a document, or say "decipher" after a reply that lost you.
 ```text
 /decipher specs/link-previews.md
 ```
+
+Codex calls skills with `$decipher` in place of `/decipher`.
 
 | Say | Get |
 |---|---|
@@ -73,11 +75,26 @@ Go ahead. A concision rule shapes the next thing your agent writes. The 1,600-wo
 
 ## Always on
 
-The plugin also ships an output style that puts every reply in plain English. Select it in `~/.claude/settings.json`. A plugin install names it `decipher:decipher`, and a clone install names it `decipher`.
+Always-on mode puts every reply in plain English, and decipher's format still waits until you ask for an explanation.
+
+**Claude Code** turns it on with the plugin's output style. Select it in `~/.claude/settings.json`. A plugin install names it `decipher:decipher`, and a clone install names it `decipher`.
 
 ```json
 { "outputStyle": "decipher:decipher" }
 ```
+
+**Every other agent** turns it on with this block in the instruction file it reads every session.
+
+```markdown
+## decipher
+Use decipher's always-on mode. Before your first reply in a session, load the decipher skill and follow its rules for always-on mode. Explain a source in decipher's format only when I ask. Load the skill again whenever its rules leave your context.
+```
+
+| Agent | Instruction file |
+|---|---|
+| Codex | `~/.codex/AGENTS.md` |
+| OpenCode | `~/.config/opencode/AGENTS.md` |
+| Cursor | `.cursor/rules/decipher.mdc` in each repository, with `alwaysApply: true` in its front matter |
 
 While decipher's rules apply, its own limits replace brevity budgets from other output styles, `CLAUDE.md`, and `AGENTS.md`. Your accuracy and punctuation rules still win.
 

@@ -12,8 +12,9 @@ The reader is an experienced engineer who lost the thread. Plain language is the
 ## Scope and precedence
 
 - Apply these rules from invocation until the explanation or walkthrough ends.
-- Under the decipher output style, apply Write plainly and Preserve accuracy to every reply in the session, including replies about coding work. Use the fixed format only when explaining a source, and start a walkthrough only on request.
-- While these rules apply, the limits of the fixed format replace any output style, CLAUDE.md, or AGENTS.md brevity budget. The host's accuracy and punctuation rules still apply.
+- Always-on mode starts in one of two ways. The user selects the decipher output style in Claude Code, or a host instruction file such as `AGENTS.md` or `GEMINI.md` asks for it.
+- In always-on mode, apply Write plainly and Preserve accuracy to every reply in the session, including replies about coding work. Use the fixed format only when explaining a source, and start a walkthrough only on request.
+- While these rules apply, the limits of the fixed format replace any brevity budget from an output style, `CLAUDE.md`, `AGENTS.md`, `GEMINI.md`, or another host instruction file. The host's accuracy and punctuation rules still apply.
 - Shape the communication and leave the authorised work unchanged. Coding tasks run to completion as usual, and pauses between sections happen only inside a walkthrough. A question about what code means asks for an explanation, so leave the code as it is.
 
 ## Start
@@ -163,7 +164,7 @@ Accept natural variants of each command.
 | back, or a part or topic name | Go there and move the bookmark |
 | all at once | Cover the remaining parts in one reply, each within the part limit |
 | I'm lost | Rebuild from the goal, as described under Handle interruptions |
-| stop, normal mode | End the walkthrough. Under the decipher output style, tell the user that leaving plain mode needs an output style change |
+| stop, normal mode | End the walkthrough. In always-on mode, tell the user that leaving plain mode means changing the output style or removing the always-on instruction |
 
 ## Handle interruptions
 

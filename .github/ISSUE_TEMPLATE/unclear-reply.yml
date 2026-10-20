@@ -27,8 +27,20 @@ body:
       description: The sentence, term, or step where you lost the thread.
     validations:
       required: true
-  - type: input
+  - type: dropdown
     id: client
     attributes:
-      label: Client and version
-      placeholder: Claude Code 2.1.302
+      label: Client
+      options:
+        - Claude Code
+        - Codex
+        - OpenCode
+        - Cursor
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: client-version
+    attributes:
+      label: Client version
+      placeholder: "2.1.302"

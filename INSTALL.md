@@ -1,13 +1,42 @@
 # Install decipher
 
-## Claude Code
+Each section gives the install command and the way that agent calls decipher. The [Always on](README.md#always-on) section of the README turns on always-on mode in each agent.
 
-The plugin gives you the skill and an always-on output style.
+## Claude Code
 
 ```text
 /plugin marketplace add amirimi/decipher
 /plugin install decipher@decipher
 ```
+
+Call it with `/decipher`, or say "decipher".
+
+## Codex
+
+```bash
+codex plugin marketplace add amirimi/decipher
+codex plugin add decipher@decipher
+```
+
+Call it with `$decipher`, or say "decipher".
+
+## OpenCode
+
+```bash
+npx skills add amirimi/decipher -a opencode -g
+```
+
+Say "decipher" to call it.
+
+## Cursor
+
+Clone the repo into Cursor's local plugin folder, then run **Developer: Reload Window**.
+
+```bash
+git clone https://github.com/amirimi/decipher ~/.cursor/plugins/local/decipher
+```
+
+The Cursor CLI loads the same folder with `cursor-agent --plugin-dir ~/.cursor/plugins/local/decipher`. Say "decipher" to call it.
 
 ## Any other agent that reads `SKILL.md`
 

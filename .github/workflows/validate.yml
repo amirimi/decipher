@@ -18,3 +18,8 @@ jobs:
           node-version: lts/*
       - run: npm install -g @anthropic-ai/claude-code
       - run: claude plugin validate --strict .
+      - name: Every manifest carries the same version
+        run: |
+          jq -r .version .claude-plugin/plugin.json .codex-plugin/plugin.json .cursor-plugin/plugin.json | sort -u > versions.txt
+          cat versions.txt
+          test "$(wc -l < versions.txt)" -eq 1
