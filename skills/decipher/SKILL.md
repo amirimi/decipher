@@ -59,6 +59,8 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 - One consequence for people, data, or operations per line
 
 **Held back.** The parts of the source this reply skips, named so the reader can ask for any of them.
+
+**Make sure you know:** one or two foundational concepts, by name
 ```
 
 | Section | Limit |
@@ -71,6 +73,7 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 | How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour. |
 | What changes | 4 bullets of one sentence each |
 | Held back | 1 line |
+| Make sure you know | None in most replies. One line naming one or two concepts, under the rules below. |
 
 The Gist lets the reader predict the rest before reading it. Write it to these rules:
 
@@ -95,6 +98,19 @@ The Self-check keeps the reader in the loop, so they never approve what they no 
 - Omit it when the reader has nothing to approve or act on, such as when the source is a README.
 
 Most replies need no Terms, because plain words in place explain most jargon. Add Terms when the reply would otherwise leave two or more project terms that an experienced engineer outside the project could not understand from context. List only those terms, and give none to a term already explained in place.
+
+Make sure you know names a foundation the reader seems to lack, so they can learn it before asking more about the source. It is rare. A wrong one insults the reader, so leave it out whenever you are unsure. Write it to these rules:
+
+- Leave it out of a first explanation, unless the request says the user is new to the source's field.
+- After that, add it only when at least two of the user's questions about this source need the same underlying concept. One question is never enough, even when it shows a misconception.
+- Name that concept before you add the line. If you cannot name one concept that both questions need, leave the line out.
+- Count only questions about the source's specialty. Answer a question about a general engineering term, such as a status code or a deploy, in place, and never let it trigger the line.
+- Name only a concept the source relies on and never explains.
+- Name the root concept a specialist would tell a newcomer to read first, rather than one of its parts. Use the words its field uses, never the source's own component or setting.
+- Keep the whole line to one line, with one concept or two at most, and no explanation after them.
+- Add the line at most once per source in a conversation. Repeat it only if the user asks about that concept again.
+- Place it last. Nothing follows it, so put any offer to explain before it. During a walkthrough, place it just above the footer, which stays last.
+- Never name a concept the reply already explains in place, under Terms, or in the Self-check.
 
 The sections fit any technical document. What two of them hold depends on the source.
 
@@ -146,7 +162,7 @@ Map the material, explain one part, answer questions, then resume at the bookmar
 3. Stop at a natural boundary and end with the bookmark footer. Let the user ask, jump, or continue. Skip generic comprehension checks and requests for confirmation.
 4. Respond to the commands in the table below.
 
-End every walkthrough turn with the footer, detours included. The footer is the only record of progress, so update it on every turn. Omit an empty field. List only questions the user actually asked under **Open**. When more than two are open, show the nearest two and the count of the rest.
+End every walkthrough turn with the footer, detours included. A Make sure you know line sits just above it. The footer is the only record of progress, so update it on every turn. Omit an empty field. List only questions the user actually asked under **Open**. When more than two are open, show the nearest two and the count of the rest.
 
 ```markdown
 **Paused at:** part 2 of 4, retry logic
@@ -173,6 +189,7 @@ Accept natural variants of each command.
 - When the user offers their own reading or a better idea, compare it with the source before anything else. Say in one sentence where it matches, then where the source differs and the source's stated reason. When the user's idea holds up better than the source's, say so plainly and name what in the source it would change.
 - When several questions arrive, answer them briefly together when practical. When they need substantial treatment, answer the prerequisite first and keep the rest under **Open**. Never drop a question silently or make the user retype it.
 - When the user is lost, restate the goal, one established fact, and the connection between them in simpler words. Use a different example if one helps. A reworded copy of the same explanation leaves the reader where they were.
+- When two of the user's questions about one source need the same specialty concept, answer the question and offer to explain that concept before going on. Then close with the Make sure you know line.
 - Assume the reader has absorbed only what they have said they understood. Never write "now that X is clear", "as you saw", or "as we established". Read "continue" as a request for the next part and nothing more. Never infer comprehension, agreement, or approval from silence.
 - Resume from the latest footer. When it is missing, rebuild it from the visible conversation or ask the user where to pick up. Never invent prior progress. Write a durable resume note only when the user asks.
 
@@ -196,4 +213,5 @@ Accept natural variants of each command.
 - Would an outsider still meet two or more unexplained project terms? If so, are those terms under Terms, and only those?
 - Did compressing remove a condition that changes the meaning?
 - Would deleting any sentence lose a fact the reader needs? If not, delete it.
+- If a Make sure you know line appears, do two of the user's questions about this source need that one specialty concept? Is it the first such line for this source, and the very last line, naming at most two root concepts?
 - During a walkthrough, does the reply end with a current footer?

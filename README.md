@@ -58,18 +58,21 @@ Specs and design docs are home turf. PRs, reports, incident write-ups, READMEs, 
 ## Every answer, same shape
 
 ```text
-Gist.          a few words that carry the whole idea
-Bottom line.   what it does, where it stands, what backs it
-Self-check.    one question you answer to yourself
--------------  most readers stop here
-Terms.         only when the jargon would lose you
-Needs you.     decisions, blockers, risks
-How it works.  the steps, in order
-What changes.  who and what feels it
-Held back.     everything skipped, by name
+Gist.                a few words that carry the whole idea
+Bottom line.         what it does, where it stands, what backs it
+Self-check.          one question you answer to yourself
+-------------------  most readers stop here
+Terms.               only when the jargon would lose you
+Needs you.           decisions, blockers, risks
+How it works.        the steps, in order
+What changes.        who and what feels it
+Held back.           everything skipped, by name
+Make sure you know:  a foundation you may be missing, only when your questions show it
 ```
 
 The Self-check is the point. It comes from the document's own premise and asks for your judgment, so scrolling back won't answer it. Can't answer it? You've stopped steering. Take the wheel back before you approve anything.
+
+When your follow-ups keep circling a concept the document never explains, the last line names it. Learn that first, and the document reads differently.
 
 ## "Can't I just tell Claude to be concise?"
 
