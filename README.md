@@ -38,10 +38,10 @@ Tested with Claude Code 2.1.302, Codex 0.149.1, OpenCode 1.19.3, and the Cursor 
 Point it at a document, or say "decipher" after a reply that lost you.
 
 ```text
-/decipher specs/link-previews.md
+/decipher:decipher specs/link-previews.md
 ```
 
-Codex calls skills with `$decipher` in place of `/decipher`.
+A clone install shortens the command to `/decipher`, and Codex uses `$decipher`.
 
 | Say | Get |
 |---|---|
@@ -100,7 +100,7 @@ While decipher's rules apply, its own limits replace brevity budgets from other 
 
 ## A real run
 
-`/decipher` on a 1,618-word agent-written spec for link previews in LiCode, a code-review practice app. The reply runs 461 words, and the three parts you read first run 123.
+decipher on a 1,618-word agent-written spec for link previews in LiCode, a code-review practice app. The reply runs 461 words, and the three parts you read first run 123.
 
 <details>
 <summary>Full reply</summary>

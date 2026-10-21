@@ -9,7 +9,7 @@ Each section gives the install command and the way that agent calls decipher. Th
 /plugin install decipher@decipher
 ```
 
-Call it with `/decipher`, or say "decipher".
+Call it with `/decipher:decipher`, or say "decipher".
 
 ## Codex
 
@@ -57,4 +57,4 @@ mkdir -p ~/.claude/output-styles
 ln -s ~/decipher/output-styles/decipher.md ~/.claude/output-styles/decipher.md
 ```
 
-A clone install names the output style `decipher`, and a plugin install names it `decipher:decipher`. Keep only one install, or Claude Code loads the skill twice under two names.
+A clone install calls the skill with `/decipher` and names the output style `decipher`. A plugin install uses `decipher:decipher` for both. Keep only one install, or Claude Code loads the skill twice under two names.
