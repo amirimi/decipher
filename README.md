@@ -22,6 +22,8 @@
 
 ## Install
 
+decipher is listed in [Claude's plugin directory](https://claude.ai/customize/plugins/id/cba64762-9a2d-42c8-914b-859aaa270617%40anthropic-plugin-directory) and on [cursor.directory](https://cursor.directory/plugins/decipher).
+
 **Claude Code** gets the skill and an always-on output style.
 
 ```text

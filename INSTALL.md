@@ -9,7 +9,7 @@ Each section gives the install command and the way that agent calls decipher. Th
 /plugin install decipher@decipher
 ```
 
-Call it with `/decipher:decipher`, or say "decipher".
+Call it with `/decipher:decipher`, or say "decipher". On a Pro, Max, Team, or Enterprise plan, you can also add it from [Claude's plugin directory](https://claude.ai/customize/plugins/id/cba64762-9a2d-42c8-914b-859aaa270617%40anthropic-plugin-directory), and it syncs to Claude Code, the Claude apps, and Cowork.
 
 ## Codex
 
@@ -30,7 +30,7 @@ Say "decipher" to call it.
 
 ## Cursor
 
-Clone the repo into Cursor's local plugin folder, then run **Developer: Reload Window**.
+Add it from its [cursor.directory page](https://cursor.directory/plugins/decipher), or clone the repo into Cursor's local plugin folder and run **Developer: Reload Window**.
 
 ```bash
 git clone https://github.com/amirimi/decipher ~/.cursor/plugins/local/decipher
