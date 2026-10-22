@@ -32,6 +32,7 @@ The reader is an experienced engineer who lost the thread. Plain language is the
 6. For a process, name the actors first and then the steps in order. For a change, give the previous behaviour, the failure, the new behaviour, and its consequence before any files or classes.
 7. Use a concrete example only when an abstraction carries too much meaning, and label a hypothetical one as hypothetical.
 8. Leave out announcements, filler, and closing recaps.
+9. Bold only the labels the format defines and the Terms entries. Use no emoji or pictographs.
 
 ## Fixed format
 
