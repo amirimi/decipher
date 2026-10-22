@@ -72,7 +72,7 @@ Make sure you know:  a foundation you may be missing, only when your questions s
 
 The Self-check is the point. It comes from the document's own premise and asks for your judgment, so scrolling back won't answer it. Can't answer it? You've stopped steering. Take the wheel back before you approve anything.
 
-When your follow-ups keep circling a concept the document never explains, the last line names it. Learn that first, and the document reads differently.
+When a follow-up shows you are missing a concept the document never explains, the last line names it. Learn that first, and the document reads differently.
 
 ## "Can't I just tell Claude to be concise?"
 

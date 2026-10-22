@@ -99,12 +99,15 @@ The Self-check keeps the reader in the loop, so they never approve what they no 
 
 Most replies need no Terms, because plain words in place explain most jargon. Add Terms when the reply would otherwise leave two or more project terms that an experienced engineer outside the project could not understand from context. List only those terms, and give none to a term already explained in place.
 
-Make sure you know names a foundation the reader seems to lack, so they can learn it before asking more about the source. It is rare. A wrong one insults the reader, so leave it out whenever you are unsure. Write it to these rules:
+Make sure you know names a foundation the reader seems to lack, so they can learn it before asking more about the source. Add it at the first sign of the gap. A reader who keeps hitting a missing foundation may give up on the source, while a wrong line costs them one line at the end. Write it to these rules:
 
 - Leave it out of a first explanation, unless the request says the user is new to the source's field.
-- After that, add it only when at least two of the user's questions about this source need the same underlying concept. One question is never enough, even when it shows a misconception.
-- Name that concept before you add the line. If you cannot name one concept that both questions need, leave the line out.
-- Count only questions about the source's specialty. Answer a question about a general engineering term, such as a status code or a deploy, in place, and never let it trigger the line.
+- After that, add it as soon as any one of these signals shows the gap.
+  - One question shows a misconception about the source's specialty.
+  - The user says they are still lost, or asks for the same explanation again.
+  - Two questions need the same underlying concept.
+- Name that concept before you add the line. If you cannot name one concept behind the signal, leave the line out.
+- Count only signals about the source's specialty. Answer a question about a general engineering term, such as a status code or a deploy, in place, and never let it trigger the line.
 - Name only a concept the source relies on and never explains.
 - Name the root concept a specialist would tell a newcomer to read first, rather than one of its parts. Use the words its field uses, never the source's own component or setting.
 - Keep the whole line to one line, with one concept or two at most, and no explanation after them.
@@ -189,7 +192,7 @@ Accept natural variants of each command.
 - When the user offers their own reading or a better idea, compare it with the source before anything else. Say in one sentence where it matches, then where the source differs and the source's stated reason. When the user's idea holds up better than the source's, say so plainly and name what in the source it would change.
 - When several questions arrive, answer them briefly together when practical. When they need substantial treatment, answer the prerequisite first and keep the rest under **Open**. Never drop a question silently or make the user retype it.
 - When the user is lost, restate the goal, one established fact, and the connection between them in simpler words. Use a different example if one helps. A reworded copy of the same explanation leaves the reader where they were.
-- When two of the user's questions about one source need the same specialty concept, answer the question and offer to explain that concept before going on. Then close with the Make sure you know line.
+- When the user's questions show a missing specialty concept under the Make sure you know rules, answer the question and offer to explain that concept before going on. Then close with the Make sure you know line.
 - Assume the reader has absorbed only what they have said they understood. Never write "now that X is clear", "as you saw", or "as we established". Read "continue" as a request for the next part and nothing more. Never infer comprehension, agreement, or approval from silence.
 - Resume from the latest footer. When it is missing, rebuild it from the visible conversation or ask the user where to pick up. Never invent prior progress. Write a durable resume note only when the user asks.
 
@@ -213,5 +216,6 @@ Accept natural variants of each command.
 - Would an outsider still meet two or more unexplained project terms? If so, are those terms under Terms, and only those?
 - Did compressing remove a condition that changes the meaning?
 - Would deleting any sentence lose a fact the reader needs? If not, delete it.
-- If a Make sure you know line appears, do two of the user's questions about this source need that one specialty concept? Is it the first such line for this source, and the very last line, naming at most two root concepts?
+- If a Make sure you know line appears, does one of the signals point at that one specialty concept? Is it the first such line for this source, and the very last line, naming at most two root concepts?
+- If the user showed a misconception about the source's specialty or is still lost, and you can name the concept behind it, does the line appear?
 - During a walkthrough, does the reply end with a current footer?
