@@ -2,7 +2,7 @@
   "name": "decipher",
   "displayName": "decipher",
   "description": "Rewrites agent-written specs, PRs, and reports into plain English, gist first, with one question that checks you still follow.",
-  "version": "0.99.1",
+  "version": "1.0.0",
   "author": {
     "name": "Amir Karimi",
     "url": "https://github.com/amirimi"
