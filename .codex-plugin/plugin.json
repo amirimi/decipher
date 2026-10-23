@@ -1,6 +1,6 @@
 {
   "name": "decipher",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Rewrites agent-written specs, PRs, and reports into plain English, gist first, with one question that checks you still follow.",
   "author": {
     "name": "Amir Karimi",

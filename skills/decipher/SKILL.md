@@ -52,7 +52,7 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 - **term**: its meaning in about a dozen words
 
 **Needs you.**
-- A decision, blocker, risk, or open question that changes what the reader does
+- The reader's next move on a decision, blocker, risk, or open question, then why
 
 **How it works.**
 1. One step per line, in the order things happen
@@ -69,7 +69,7 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 | Bottom line | 3 sentences. Name any blocker the source establishes here. |
 | Self-check | 1 question |
 | Terms | None in most replies. Up to 5 when the source is heavy with jargon. |
-| Needs you | 5 bullets of one sentence each, most consequential first |
+| Needs you | Up to 5 bullets of one sentence each, blockers to approval first |
 | How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour. |
 | What changes | 4 bullets of one sentence each |
 | Make sure you know | None in most replies. One line naming one or two concepts, under the rules below. |
@@ -95,6 +95,16 @@ The Self-check keeps the reader in the loop, so they never approve what they no 
 - Shape each question to its source, and never reuse the form of an earlier Self-check.
 - Give no answer and expect no reply. A reader who cannot answer has lost the thread and should step back, for example by asking for a walkthrough.
 - Omit it when the reader has nothing to approve or act on, such as when the source is a README.
+
+Needs you turns reading into action. Each bullet is a move the reader makes next, and the reader can hand any bullet to the agent as a request. Write it to these rules:
+
+- Start each bullet with the reader's verb, such as decide, check, answer, or have the agent change something. Give the reason after it in a "because" clause, and keep the whole bullet to one sentence.
+- Write a decision as "decide whether", and leave the choice to the reader.
+- Leave out a finding that asks nothing of the reader. Put it in How it works or What changes, or drop it.
+- Suggest only a move that the source's own facts call for. A doubt about your own reading, such as tests you have not run, stays in the Bottom line.
+- Put what blocks approval first.
+- List only the moves that matter, which is often fewer than five.
+- When blockers to approval remain beyond the fifth bullet, add one plain sentence after it that gives only their count, such as "Two more items block approval. Ask for them when you are ready." Add no sentence for remaining moves that block nothing.
 
 Most replies need no Terms, because plain words in place explain most jargon. Add Terms when the reply would otherwise leave two or more project terms that an experienced engineer outside the project could not understand from context. List only those terms, and give none to a term already explained in place.
 
@@ -137,7 +147,7 @@ Fixed. Drift gate was short-circuiting on the cached plan, swapped to a fresh `p
 **Bottom line.** The CI step that fails when live infrastructure differs from the code now runs a fresh `pulumi preview` for every stack. The report says all 14 tests pass, and I have not run them.
 
 **Needs you.**
-- Two tenants deploying the same shared stack can still overwrite each other, because the lock only serialises runs within one tenant.
+- Decide whether shared stacks need a lock across tenants, because two tenants deploying the same shared stack can still overwrite each other.
 
 **How it works.**
 1. Before, the check reused the preview saved by the previous run.
