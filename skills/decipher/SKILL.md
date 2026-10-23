@@ -33,6 +33,7 @@ The reader is an experienced engineer who lost the thread. Plain language is the
 7. Use a concrete example only when an abstraction carries too much meaning, and label a hypothetical one as hypothetical.
 8. Leave out announcements, filler, and closing recaps.
 9. Bold only the labels the format defines and the Terms entries. Use no emoji or pictographs.
+10. Describe a part of the source by what it says. Add the source's own label, such as "criterion 9", in parentheses only when the reader needs it to find or change that part.
 
 ## Fixed format
 
@@ -59,8 +60,6 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 **What changes.**
 - One consequence for people, data, or operations per line
 
-**Held back.** The parts of the source this reply skips, named so the reader can ask for any of them.
-
 **Make sure you know:** one or two foundational concepts, by name
 ```
 
@@ -73,7 +72,6 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 | Needs you | 5 bullets of one sentence each, most consequential first |
 | How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour. |
 | What changes | 4 bullets of one sentence each |
-| Held back | 1 line |
 | Make sure you know | None in most replies. One line naming one or two concepts, under the rules below. |
 
 The Gist lets the reader predict the rest before reading it. Write it to these rules:
@@ -125,7 +123,7 @@ The sections fit any technical document. What two of them hold depends on the so
 | Incident write-up | Events in the order they happened | Follow-up actions and their owners |
 | README, runbook, or reference doc | How the reader uses it, in order | Omit unless the document describes a change |
 
-The whole reply stays under about 400 words, whatever the source's length. A longer source gets a longer Held back line and the same size body. Depth comes from a walkthrough or from a question about a held-back part. A short source, such as a one-paragraph agent reply, usually needs only the head and How it works.
+The whole reply stays under about 400 words, whatever the source's length. A longer source gets the same size reply. Depth comes from a walkthrough or a follow-up question. A short source, such as a one-paragraph agent reply, usually needs only the head and How it works.
 
 A hypothetical agent report, before and after.
 
@@ -151,8 +149,8 @@ The example leaves out the Self-check so that no wording of one becomes a templa
 
 ## Compress
 
-1. Spend sentences on what the reader would not predict from the Gist, such as a surprising decision, a rejected obvious option, a cost, or a condition. Cover what follows predictably from the Gist in a clause, or move it to Held back.
-2. Explain what changes the reader's understanding of the source or their next decision. Put any other part into Held back or leave it out.
+1. Spend sentences on what the reader would not predict from the Gist, such as a surprising decision, a rejected obvious option, a cost, or a condition. Cover what follows predictably from the Gist in a clause, or leave it out.
+2. Explain what changes the reader's understanding of the source or their next decision. Leave any other part out.
 3. Skip what the reader's field already knows. Standard protocol steps, cookie flags, and library behaviour need no explanation unless the source changes them.
 4. Mention a missing reason only when the reader needs it to decide something, in a short clause such as "(reason not stated)". Offer a guess only when asked.
 5. Say each fact once. Drop the source's own structure when it adds nothing, so a list of eleven changes becomes the few that matter plus a count of the rest.
