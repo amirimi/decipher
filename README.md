@@ -104,36 +104,37 @@ While decipher's rules apply, its own limits replace brevity budgets from other 
 
 ## A real run
 
-decipher on a 1,618-word agent-written spec for link previews in LiCode, a code-review practice app. The reply runs 403 words, and the three parts you read first run 121.
+decipher on a 1,618-word agent-written spec for link previews in LiCode, a code-review practice app. The reply runs 424 words, and the three parts you read first run 113.
 
 <details>
 <summary>Full reply</summary>
 
-**Gist.** chat link preview cards, case question shown, answers never shown, images rendered ahead and committed, text edits force re-render, new tab icon
+**Gist.** links unfurl as cards, answers never shown, images prerendered and committed, text edits force rerender, tab icon replaces globe
 
-**Bottom line.** The spec makes LiCode links unfurl as a card with a title, a description and an image. This works in Slack, LinkedIn, X and other apps. The server writes each card's tags into the page HTML, and an author renders every image in advance and commits it. The spec has been implemented with logged changes, and the post-deploy inspector check (criterion 9) is recorded in the PR, which I have not seen.
+**Bottom line.** The spec makes every shared LiCode link unfurl into a preview card and gives the site a browser-tab icon. Its implementation notes describe the work as built, with images now named by a digest of their card's text. Support comes from crawler checks against the live site, a LinkedIn render, and a largest image of 162 KB against WhatsApp's 300 KB limit.
 
-**Self-check.** Committed images only work while an author adds every case and track by hand, so does anything planned create pages without an author?
+**Self-check.** An author renders and commits every card image before deploy, assuming every item page already exists by then. Can items reach your production database without a code change?
 
 **Needs you.**
-- Criterion 7 and the spec body still describe `manifest.json`, hand-bumped `-v1` names and the old icon colours, which the implementation replaced.
-- The site card avoids claiming every case is real until three LiCode-written cases, including Cancel cleanly, are replaced.
-- Home still leads with "Make the call before you know how it ended", so its pitch may need to match the card's.
-- The open question promising design previews before the full build looks stale, because the change log shows images already live (my inference).
+- Have the agent reconcile the spec body with its notes, because the body still describes a manifest that the digest naming replaced. That stale text appears in Scope, the stale-images constraint, and criterion 7.
+- Check whether you approved the image designs, because the spec promised previews first, but the notes show every card already rendered.
+- Check that the PR records the post-deploy Facebook, LinkedIn, and Slack results (criterion 9), because the notes mention only a pre-deploy `curl` check.
+- Decide whether the site card's careful wording stays, because three authored cases stop it from claiming every change is real.
+- Decide whether Home adopts the card's positioning, because Home still leads with "Make the call before you know how it ended."
 
 **How it works.**
-1. Someone pastes a link, and the platform's crawler fetches the HTML without running JavaScript.
-2. The server passes the path to `preview_for`, which returns the card for that case or track, or else the site card.
-3. Only the `/items/` card reads the database, one row, and every other card comes from memory.
-4. The server writes the title, description and absolute image URL into the served `index.html`, escaped as HTML attributes.
-5. The crawler downloads a PNG that an author rendered earlier with Playwright from one HTML template.
-6. Each image name is a hash of its card's text, so an edit gets a fresh URL and gets past crawler caches that last about a week.
+1. Someone pastes a LiCode link into Slack, LinkedIn, X, WhatsApp, iMessage, or Discord.
+2. That platform's crawler fetches the HTML without running JavaScript and reads the Open Graph tags in its head.
+3. The server passes the path to `preview_for`, which returns a case card, a track card, or the site card.
+4. The server writes that card's escaped tags into `index.html`, adding image and page URLs only when `LICODE_PUBLIC_ORIGIN` is set.
+5. The crawler downloads the named PNG, which an author rendered earlier with Playwright and committed.
+6. Each PNG's name changes whenever its card's text changes, so crawler caches never serve an old image.
 
 **What changes.**
-- A shared case shows its question and the change's opening lines, and never the outcome, answer or classification.
-- An author who edits a question, title or destination must re-run the render script, or a test fails.
-- Production must set `LICODE_PUBLIC_ORIGIN`, because without it pages carry no image and no `og:url`.
-- Browser tabs show a white `li/` icon on an ink tile, and `/favicon.ico` stops returning `index.html`.
+- A shared case shows its question but never its outcome, classification, motif, answer, or result.
+- The tab shows a white `li/` mark on an ink tile, and `/favicon.ico` stops returning `index.html`.
+- Every page's `description` tag changes from "Real code changes. Your call before hindsight." to its card's description.
+- Authors must rerun the render script after editing a question, title, or destination, because a test fails until the image exists.
 
 </details>
 
