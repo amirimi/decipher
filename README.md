@@ -135,6 +135,10 @@ decipher on a 1,618-word agent-written spec for link previews in LiCode, a code-
 
 decipher left you lost? That's a bug. [Open an issue](https://github.com/amirimi/decipher/issues/new?template=unclear-reply.yml) with the original text and the reply.
 
+Anything else, such as a reply that helped or a section you never read, goes in [Discussions](https://github.com/amirimi/decipher/discussions).
+
+**If you find decipher useful, please star the repo.** It helps other engineers who review agent-written specs find it.
+
 ## License
 
 [MIT](LICENSE)
