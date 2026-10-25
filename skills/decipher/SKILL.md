@@ -57,9 +57,6 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 **How it works.**
 1. One step per line, in the order things happen
 
-**What changes.**
-- One consequence for people, data, or operations per line
-
 **Make sure you know:** one or two foundational concepts, by name
 ```
 
@@ -70,8 +67,7 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 | Self-check | 1 question |
 | Terms | None in most replies. Up to 5 when the source is heavy with jargon. |
 | Needs you | Up to 5 bullets of one sentence each, blockers to approval first |
-| How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour. |
-| What changes | 4 bullets of one sentence each |
+| How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour and its consequence. |
 | Make sure you know | None in most replies. One line naming one or two concepts, under the rules below. |
 
 The Gist lets the reader predict the rest before reading it. Write it to these rules:
@@ -100,7 +96,7 @@ Needs you turns reading into action. Each bullet is a move the reader makes next
 
 - Start each bullet with the reader's verb, such as decide, check, answer, or have the agent change something. Give the reason after it in a "because" clause, and keep the whole bullet to one sentence.
 - Write a decision as "decide whether", and leave the choice to the reader.
-- Leave out a finding that asks nothing of the reader. Put it in How it works or What changes, or drop it.
+- Leave out a finding that asks nothing of the reader. Put it in How it works, or drop it.
 - Suggest only a move that the source's own facts call for. A doubt about your own reading, such as tests you have not run, stays in the Bottom line.
 - Put what blocks approval first.
 - List only the moves that matter, which is often fewer than five.
@@ -124,14 +120,16 @@ Make sure you know names a foundation the reader seems to lack, so they can lear
 - Place it last. Nothing follows it, so put any offer to explain before it. During a walkthrough, place it just above the footer, which stays last.
 - Never name a concept the reply already explains in place, under Terms, or in the Self-check.
 
-The sections fit any technical document. What two of them hold depends on the source.
+The sections fit any technical document. What How it works holds depends on the source, and some sources add their own moves to Needs you.
 
-| Source | How it works | What changes |
+| Source | How it works | Needs you also holds |
 |---|---|---|
-| Spec, design doc, or PR | The mechanism, or the old behaviour, the failure, and the new behaviour | Effects on users, data, and operations |
-| Agent reply or report | What was done and found, in order | What now works and what is still broken |
-| Incident write-up | Events in the order they happened | Follow-up actions and their owners |
-| README, runbook, or reference doc | How the reader uses it, in order | Omit unless the document describes a change |
+| Spec, design doc, or PR | The mechanism, or the old behaviour, the failure, and the new behaviour, ending with its effect on users, data, or operations | An effect the reader must weigh |
+| Agent reply or report | What was done and found, in order | What is still broken |
+| Incident write-up | Events in the order they happened | Follow-ups that need the reader or have no owner |
+| README, runbook, or reference doc | How the reader uses it, in order | Nothing extra |
+
+For an agent reply or report, the Bottom line's status says what now works.
 
 The whole reply stays under about 400 words, whatever the source's length. A longer source gets the same size reply. Depth comes from a walkthrough or a follow-up question. A short source, such as a one-paragraph agent reply, usually needs only the head and How it works.
 
