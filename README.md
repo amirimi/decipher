@@ -7,7 +7,7 @@
 
 **Gist.** agent-written specs decoded, gist first, plain English after, one unskimmable question, every caveat kept
 
-**Bottom line.** Your agent writes a 1,600-word spec, and you approve it after a skim. decipher rewrites any agent-written document so its first three parts carry the whole idea in plain English, in about 120 words. The rest waits below as reference, and anything it skips is named.
+**Bottom line.** Your agent writes a 1,600-word spec, and you approve it after a skim. decipher rewrites any agent-written document so its first three parts carry the whole idea in plain English, in about 120 words. The rest waits below as reference.
 
 **Self-check.** You approved your agent's last spec. Could you name its riskiest assumption without opening it?
 
@@ -15,10 +15,9 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757.svg)](#install)
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png">
-  <img alt="A 1,618-word agent-written spec on the left, and the first three parts of decipher's reply on the right, its Gist, Bottom line, and Self-check" src="assets/hero-light.png" width="880">
-</picture>
+<p align="center">
+  <img alt="decipher opens a 2,601-word agent-written spec, then shows its reply one section at a time: Gist, Bottom line, Self-check, Needs you, How it works, and Make sure you know" src="assets/demo.gif" width="540">
+</p>
 
 ## Install
 
@@ -33,14 +32,14 @@ decipher is listed in [Claude's plugin directory](https://claude.ai/customize/pl
 
 **Codex, OpenCode, and Cursor** each have their own install in [INSTALL.md](INSTALL.md). So does any other agent that reads `SKILL.md`.
 
-Tested with Claude Code 2.1.302, Codex 0.149.1, OpenCode 1.19.3, and the Cursor CLI 2026.10.19.
+Tested with Claude Code 2.1.307, Codex 0.149.1, OpenCode 1.19.3, and the Cursor CLI 2026.10.19.
 
 ## Use
 
 Point it at a document, or say "decipher" after a reply that lost you.
 
 ```text
-/decipher:decipher specs/link-previews.md
+/decipher:decipher specs/govern-every-model-call.md
 ```
 
 A clone install shortens the command to `/decipher`, and Codex uses `$decipher`.
@@ -103,31 +102,29 @@ While decipher's rules apply, its own limits replace brevity budgets from other 
 
 ## A real run
 
-decipher on a 1,618-word agent-written spec for link previews in LiCode, a code-review practice app. The reply runs 400 words, and the three parts you read first run 110.
+decipher on a 2,601-word agent-written spec for [litellm-brownout](https://github.com/amirimi/litellm-brownout), a LiteLLM plugin that switches a team to a cheaper model once its spend crosses a set line. The reply runs 354 words, and the three parts you read first run 129.
 
 <details>
 <summary>Full reply</summary>
 
-**Gist.** server writes preview tags, cards never show outcomes, images prerendered and committed, rerender after text edits, new tab icon, spec body partly stale
+**Gist.** checks extend beyond chat, Claude Code now downgraded, embeddings never swapped, unlisted calls refused, assistants endpoints escape
 
-**Bottom line.** A shared LiCode link now unfurls into a preview card in chat apps, and the browser tab gets an icon. A case or track link shows its question or destination but never its outcome. Every other page shows one site card. The spec's change log reports the work as built, and I have not run its tests.
+**Bottom line.** Brownout used to check and downgrade only `/v1/chat/completions`. As a result, Claude Code on `/v1/messages` and Codex on `/v1/responses` were never downgraded, and their unpriced models were served at $0. The spec sorts every LiteLLM call type into five kinds, checks team and key on all of them, and swaps models only for text generation. It shipped in commit 7822bbf, and the spec reports lab runs on LiteLLM 1.101.6 to 1.104.2 that downgraded all five text endpoints.
 
-**Self-check.** Item cards take their text from the database but their image from a committed file, so can a new item reach production without anyone re-rendering images?
+**Self-check.** Brownout refuses any call type that a future LiteLLM release adds until someone reviews it. Would your governed teams rather hit that 503 than have a new endpoint skip the downgrade?
 
 **Needs you.**
-- Have the agent bring the spec body in line with its change log. The constraints, scope, icon section and criterion 7 still describe the manifest, hand-bumped versions and grey icon that the log replaced.
-- Check that the PR records the Facebook and LinkedIn inspector results and a Slack unfurl after deploy (criterion 9). The spec reports only a pre-deploy `curl` check, which showed that Cloudflare let the crawlers through.
-- Decide whether the design-preview question still stands. The change log says every image was re-rendered after LinkedIn showed them blurry.
-- Decide whether to replace the three cases written for LiCode with real ones. Only then can the site card claim that every case is real.
-- Decide whether Home's copy should take on the card's positioning. Home still leads with the old line, and the spec warns that mismatched copy reads as two products.
+- Decide whether to block the assistants, threads and runs endpoints inside LiteLLM, because LiteLLM runs no plugin hook there and brownout cannot see or refuse them.
+- Check that every fallback deployment that uses an `openai/` model implements the Responses API, because LiteLLM forwards `/v1/messages` there as a Responses call. A server without that API answers 404 and LiteLLM then puts the deployment on cooldown.
+- Weigh that images, speech, transcription, moderation, rerank, OCR and video skip the price check, because an unpriced model on those endpoints records $0 spend.
 
 **How it works.**
-1. Someone pastes a LiCode link, and the chat app's crawler fetches the page without running JavaScript.
-2. The server's `preview_for` function picks a case, track or site card for the path, and the server writes that card's tags into `index.html`.
-3. The server writes the image and page URLs only when `LICODE_PUBLIC_ORIGIN` is set, because crawlers ignore relative URLs.
-4. An author renders every image ahead of time with Playwright from one HTML template and commits the PNGs, because the server has no browser.
-5. Each image's file name is a hash of its card text and `TEMPLATE_VERSION`. Crawlers cache cards for about a week, and the new name makes them fetch the changed image.
-6. A test fails until a changed card's image exists, so authors must rerun `render-og.mjs` after editing any question, title or destination.
+1. The pre-call hook looks up each call's LiteLLM `call_type` in one table in `bridge.py` and gets back one kind.
+2. Every allowed call gets the team and key checks. A call that names a model also gets the model checks and the spend-tier decision.
+3. Only `text` calls switch to the team's cheaper fallback once spend passes `degrade_at`. These are chat, text completion, `/v1/messages`, `/v1/responses` and Gemini `generate_content`.
+4. Embeddings and `/v1/responses/compact` keep the model the caller named. Another model would produce incompatible vectors or an unreadable summary.
+5. Calls that name no model, such as MCP tool calls and file reads, get only the team and key checks.
+6. Provider pass-through, realtime, batches, fine-tuning and every unlisted call type get a 503 that names the call type.
 
 </details>
 
