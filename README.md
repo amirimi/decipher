@@ -16,8 +16,8 @@
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757.svg)](#install)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png">
-  <img alt="A 2,601-word agent-written spec on the left, and decipher's reply on the right: its Gist, Bottom line, Self-check, Needs you, How it works, and a Make sure you know line" src="assets/hero-light.png" width="880">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-sections-dark.png">
+  <img alt="A 2,601-word agent-written spec on the left, and decipher's reply on the right: its Gist, Bottom line, Self-check, Needs you, How it works, and a Make sure you know line" src="assets/hero-sections-light.png" width="880">
 </picture>
 
 ## Install
