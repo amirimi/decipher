@@ -16,7 +16,7 @@
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757.svg)](#install)
 
 <p align="center">
-  <img alt="decipher opens a 2,601-word agent-written spec, then shows its reply one section at a time: Gist, Bottom line, Self-check, Needs you, How it works, and Make sure you know" src="assets/demo.webp" width="100%">
+  <img alt="decipher opens a 2,601-word agent-written spec, then shows its reply one section at a time: Gist, Bottom line, Self-check, Needs you, How it works, and Make sure you know" src="assets/demo-wide.webp" width="100%">
 </p>
 
 ## Install
