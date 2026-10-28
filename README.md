@@ -15,9 +15,10 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757.svg)](#install)
 
-<p align="center">
-  <img alt="decipher's reply to a 2,601-word agent-written spec, with its Gist in focus under the caption The whole idea. Words, not sentences. A row above names every section: Gist, Bottom line, Self-check, Needs you, How it works, and Make sure you know" src="assets/demo.png" width="100%">
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/hero-dark.png">
+  <img alt="A 2,601-word agent-written spec on the left, and decipher's reply on the right: its Gist, Bottom line, Self-check, Needs you, How it works, and a Make sure you know line" src="assets/hero-light.png" width="880">
+</picture>
 
 ## Install
 
