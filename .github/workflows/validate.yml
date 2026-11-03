@@ -23,3 +23,12 @@ jobs:
           jq -r .version .claude-plugin/plugin.json .codex-plugin/plugin.json .cursor-plugin/plugin.json | sort -u > versions.txt
           cat versions.txt
           test "$(wc -l < versions.txt)" -eq 1
+      - name: The template, the limits table, and the README list the same sections in order
+        run: |
+          template=$(awk '/^## Fixed format/ {sec=1} sec && /^```markdown$/ {inside=1; next} inside && /^```$/ {exit} inside && match($0, /^\*\*[^*]+\*\*/) {s=substr($0, 3, RLENGTH-4); sub(/[.:?]$/, "", s); print s}' skills/decipher/SKILL.md)
+          limits=$(awk '/^\| Section \| Limit \|$/ {inside=1; next} inside && /^\|---/ {next} inside && /^\|/ {split($0, c, "|"); s=c[2]; gsub(/^ +| +$/, "", s); sub(/[.:?]$/, "", s); print s; next} inside {exit}' skills/decipher/SKILL.md)
+          readme=$(awk '/^## Every answer, same shape/ {sec=1} sec && /^```text$/ {inside=1; next} inside && /^```$/ {exit} inside && !/^-/ {split($0, c, "  "); s=c[1]; sub(/[.:?]$/, "", s); print s}' README.md)
+          printf '%s\n' "$template"
+          diff <(printf '%s\n' "$template") <(printf '%s\n' "$limits")
+          diff <(printf '%s\n' "$template") <(printf '%s\n' "$readme")
+          test "$(printf '%s\n' "$template" | tail -n 1)" = "Make sure you know"

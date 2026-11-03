@@ -57,6 +57,8 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 **How it works.**
 1. One step per line, in the order things happen
 
+**Hollow?** one or two phrases of about eight words, each naming the kind and the part it touches
+
 **Make sure you know:** one or two foundational concepts, by name
 ```
 
@@ -68,6 +70,7 @@ The Gist, Bottom line, and Self-check form the head. Many readers stop after the
 | Terms | None in most replies. Up to 5 when the source is heavy with jargon. |
 | Needs you | Up to 5 bullets of one sentence each, blockers to approval first |
 | How it works | 6 steps of one sentence each. For a change, the steps run from the old behaviour through the failure to the new behaviour and its consequence. |
+| Hollow? | None in most replies. One line of one or two warnings, about eight words each. |
 | Make sure you know | None in most replies. One line naming one or two concepts, under the rules below. |
 
 The Gist lets the reader predict the rest before reading it. Write it to these rules:
@@ -104,6 +107,21 @@ Needs you turns reading into action. Each bullet is a move the reader makes next
 
 Most replies need no Terms, because plain words in place explain most jargon. Add Terms when the reply would otherwise leave two or more project terms that an experienced engineer outside the project could not understand from context. List only those terms, and give none to a term already explained in place.
 
+The Hollow? line warns where the source builds on something it is itself unsure of, or answers a request with hand-waving it never admits. It informs the reader and leaves the judgment to them, because uncertainty and caution are often sound. Most replies omit it. Write it to these rules:
+
+- Judge the source against one request only. That request is the user's message that the latest response answered, when the source is that response or a file it wrote. It can also be the user's own words when asking for the explanation. Never search earlier turns for intent or ask the user for it. When no such request is in view, or the one in view asks for no decision, judge hand-waving against the source's own stated goal alone.
+- Report a premise only when the source itself marks it as uncertain. The source hedges it, calls it an assumption, says it is unverified or untested, offers it as a possibility or a future need, or justifies it only by what might happen. Never report a claim the source states as fact, however thin its support.
+- Report it only when the source builds or keeps something that would not exist without the premise, such as an extra code path, a compatibility layer, an abstraction, a fallback, infrastructure, ongoing maintenance, or an architectural decision. Look for it in the reasons the source gives for a choice, including why it rejects a simpler option. A default value, a tuning constant, or a small piece kept in place, such as one helper or one field, never qualifies. Work the request asked for rests on the user's intent and never qualifies either. Ordinary guards, such as a retry, a timeout, or input validation, qualify only when the source builds a dedicated path for the failure, such as a second implementation or a fallback service. Neither do hedge words with nothing resting on them.
+- Report hand-waving that the source never admits. The request asks for or implies a decision, such as a pick, a recommendation, a plan, a spec, or a fix. The source answers its core with hedges, open options, or placeholders, or with several solutions where one was asked. It never says that it left the choice open, or why one solution is not enough. Look only at the core of what was asked, never at side details.
+- Fail open. Report hand-waving only when the request and the gap are both plain. Stay silent when either is unclear, when the source admits the gap, when a hedge names the condition it depends on, or when the request asks to explore, list, or compare options. An admitted gap belongs in Needs you, and an exploratory source's proposals are options for the reader, never commitments.
+- Give no warning to a precaution that rests on evidence the source reports, such as an incident, a measurement, or a reproduction.
+- Leave out an item that Needs you carries, such as an open question the source raises or a decision it leaves to the reader. Leave out the premise the Self-check rests on, because the Self-check keeps its answer out of the reply.
+- Write one line of one or two warnings, about eight words each, with no explanation after them. Each warning names the kind, such as a premise the source is unsure of, an unanswered request, or several solutions where one was asked. It then names the part of the source it touches.
+- Describe a premise only in the source's own terms. Never call it unverified unless the source does, and never fault it for lacking a date, a likelihood, or proof.
+- Pass no verdict, such as unnecessary or unjustified, and advise nothing. Never open a warning with the reader's verb, because moves belong to Needs you.
+- Never invent a premise, a requirement, or a consequence the source does not state.
+- List only what matters, which is often nothing.
+
 Make sure you know names a foundation the reader seems to lack, so they can learn it before asking more about the source. Add it at the first sign of the gap. A reader who keeps hitting a missing foundation may give up on the source, while a wrong line costs them one line at the end. Write it to these rules:
 
 - Leave it out of a first explanation, unless the request says the user is new to the source's field.
@@ -120,14 +138,14 @@ Make sure you know names a foundation the reader seems to lack, so they can lear
 - Place it last. Nothing follows it, so put any offer to explain before it. During a walkthrough, place it just above the footer, which stays last.
 - Never name a concept the reply already explains in place, under Terms, or in the Self-check.
 
-The sections fit any technical document. What How it works holds depends on the source, and some sources add their own moves to Needs you.
+The sections fit any technical document. What How it works holds depends on the source. Some sources add their own moves to Needs you, and each kind gives the Hollow? line something different to look for.
 
-| Source | How it works | Needs you also holds |
-|---|---|---|
-| Spec, design doc, or PR | The mechanism, or the old behaviour, the failure, and the new behaviour, ending with its effect on users, data, or operations | An effect the reader must weigh |
-| Agent reply or report | What was done and found, in order | What is still broken |
-| Incident write-up | Events in the order they happened | Follow-ups that need the reader or have no owner |
-| README, runbook, or reference doc | How the reader uses it, in order | Nothing extra |
+| Source | How it works | Needs you also holds | Hollow? looks for |
+|---|---|---|---|
+| Spec, design doc, or PR | The mechanism, or the old behaviour, the failure, and the new behaviour, ending with its effect on users, data, or operations | An effect the reader must weigh | Commitments built on a premise the source marks uncertain |
+| Agent reply or report | What was done and found, in order | What is still broken | An answer the request called for that the reply hedges, withholds, or spreads across several solutions |
+| Incident write-up | Events in the order they happened | Follow-ups that need the reader or have no owner | Follow-ups built on a cause the write-up marks unconfirmed |
+| README, runbook, or reference doc | How the reader uses it, in order | Nothing extra | Nothing |
 
 For an agent reply or report, the Bottom line's status says what now works.
 
@@ -167,7 +185,7 @@ The example leaves out the Self-check so that no wording of one becomes a templa
 
 Map the material, explain one part, answer questions, then resume at the bookmark.
 
-1. Open with the head, then Terms if its rule applies, then Needs you, then a numbered map of three to five meaningful parts. Never imply that an unexplained part was reviewed or understood.
+1. Open with the head, then Terms if its rule applies, then Needs you, then the Hollow? line if its rules apply, then a numbered map of three to five meaningful parts. A later part never repeats a Hollow? warning. Never imply that an unexplained part was reviewed or understood.
 2. Explain the first relevant part in at most 150 words. Define any new term in place. Keep a mechanism and its essential caveat together.
 3. Stop at a natural boundary and end with the bookmark footer. Let the user ask, jump, or continue. Skip generic comprehension checks and requests for confirmation.
 4. Respond to the commands in the table below.
@@ -223,6 +241,7 @@ Accept natural variants of each command.
 - Would an outsider still meet two or more unexplained project terms? If so, are those terms under Terms, and only those?
 - Did compressing remove a condition that changes the meaning?
 - Would deleting any sentence lose a fact the reader needs? If not, delete it.
+- If the Hollow? line appears, is it one line of at most two short warnings? Does each rest either on a premise the source marks uncertain and work built on it, or on a plain request whose core the source answers with hand-waving it never admits? Does each stay out of Needs you and the Self-check, and pass no verdict?
 - If a Make sure you know line appears, does one of the signals point at that one specialty concept? Is it the first such line for this source, and the very last line, naming at most two root concepts?
 - If the user showed a misconception about the source's specialty or is still lost, and you can name the concept behind it, does the line appear?
 - During a walkthrough, does the reply end with a current footer?

@@ -65,10 +65,13 @@ Self-check.          one question you answer to yourself
 Terms.               only when the jargon would lose you
 Needs you.           decisions, blockers, risks
 How it works.        the steps, in order
+Hollow?              a one-line warning when it hedges, dodges your ask, or builds on a guess
 Make sure you know:  a foundation you may be missing, only when your questions show it
 ```
 
 The Self-check is the point. It comes from the document's own premise and asks for your judgment, so scrolling back won't answer it. Can't answer it? You've stopped steering. Take the wheel back before you approve anything.
+
+When the document dodges what you asked or builds on something it is unsure of, one line near the end warns you and names where. Pin those premises down before you build on them.
 
 When a follow-up shows you are missing a concept the document never explains, the last line names it. Learn that first, and the document reads differently.
 
