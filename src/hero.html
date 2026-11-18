@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>decipher hero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --base: #faf4ed;
+    --surface: #fffaf3;
+    --overlay: #f2e9e1;
+    --muted: #9893a5;
+    --subtle: #797593;
+    --text: #575279;
+    --love: #b4637a;
+    --pine: #286983;
+    --iris: #907aa9;
+    --rose: #d7827e;
+    --line: #dfdad9;
+    --mark: #f4ede8;
+  }
+  :root[data-theme="dark"] {
+    --base: #191724;
+    --surface: #1f1d2e;
+    --overlay: #26233a;
+    --muted: #6e6a86;
+    --subtle: #908caa;
+    --text: #e0def4;
+    --love: #eb6f92;
+    --pine: #9ccfd8;
+    --iris: #c4a7e7;
+    --rose: #ebbcba;
+    --line: #403d52;
+    --mark: #2a2837;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 880px; height: 640px; background: var(--base); }
+  body { font-family: "Inter", sans-serif; color: var(--text); padding: 28px; display: grid; grid-template-columns: 1fr 44px 1.25fr; grid-template-rows: 584px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: hidden; }
+  .label { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--subtle); display: flex; align-items: center; gap: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--love); }
+  .after .dot { background: var(--pine); }
+  .count { margin-left: auto; font-weight: 500; letter-spacing: 0.02em; text-transform: none; color: var(--muted); }
+  .arrow { display: flex; align-items: center; justify-content: center; color: var(--iris); font-size: 22px; }
+  .spec { font-size: 12px; line-height: 1.65; color: var(--subtle); position: relative; overflow: hidden; flex: 1; }
+  .spec h3 { font-size: 15px; color: var(--text); margin: 0 0 10px; }
+  .spec h4 { font-size: 12.5px; color: var(--text); margin: 0 0 4px; }
+  .spec p { margin-bottom: 9px; }
+  .spec code, .plain code { font-family: "JetBrains Mono", monospace; font-size: 0.86em; }
+  .spec::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 140px; background: linear-gradient(to bottom, transparent, var(--surface)); }
+  .plain { font-size: 12.5px; line-height: 1.5; display: flex; flex-direction: column; gap: 10px; }
+  .plain b { font-weight: 700; }
+  .sec b.l { color: var(--pine); }
+  .clamp2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .gist { font-size: 13.5px; line-height: 1.5; padding: 9px 12px; border-radius: 8px; background: var(--mark); border-left: 3px solid var(--iris); }
+  .gist span { color: var(--pine); font-weight: 500; }
+  .check { padding-top: 9px; border-top: 1px dashed var(--line); }
+  .list { margin-top: 3px; padding-left: 2px; list-style-position: inside; }
+  .list li { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 2px; }
+  .verb { color: var(--love); font-weight: 600; }
+  .more { color: var(--muted); list-style: none; }
+  .msyk { padding: 9px 12px; border-radius: 8px; border: 1px solid var(--iris); background: var(--mark); }
+  .msyk b { color: var(--iris); }
+  .msyk .when { display: block; margin-top: 2px; font-size: 11px; color: var(--muted); }
+</style>
+</head>
+<body>
+  <div class="card before">
+    <div class="label"><span class="dot"></span>Agent-written spec<span class="count">2,601 words</span></div>
+    <div class="spec">
+      <h3>Govern every model call</h3>
+      <h4>Goal</h4>
+      <p>Brownout's requirements hold for every call a governed team makes, and its downgrade reaches every text-generation endpoint. Today both stop at <code>/v1/chat/completions</code>. A team whose clients call <code>/v1/messages</code>, such as Claude Code, or <code>/v1/responses</code>, such as Codex, is never downgraded. A model added unpriced after <code>init</code> is refused for chat but served through those endpoints, where LiteLLM records $0. This replaces <code>specs/non-chat-calls.md</code>, which kept the chat-only scope, and closes <code>non-chat-pass-through</code>.</p>
+      <h4>Sequence</h4>
+      <p>The pre-call hook sorts each call by its <code>call_type</code> into one kind, in one table. It then checks the team and the key on every call, checks the model on every call that names one, and runs the tier decision on every call that names a model. Only a text-generation call can be downgraded. It writes its outcome into the <code>brownout</code> field. The router calls the filter hook, which verifies every call that names a model against that outcome and passes a call without a model. The headers hook discloses the outcome on every response to a call that names a model.</p>
+      <p>This table replaces the approved one after the findings and decisions at the end of this spec.</p>
+    </div>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="card after">
+    <div class="label"><span class="dot"></span>After decipher<span class="count">you read 129 of 354 words</span></div>
+    <div class="plain">
+      <p class="gist"><b>Gist.</b> <span>checks extend beyond chat, Claude Code now downgraded, embeddings never swapped, unlisted calls refused, assistants endpoints escape</span></p>
+      <p class="sec clamp2"><b class="l">Bottom line.</b> Brownout used to check and downgrade only <code>/v1/chat/completions</code>. As a result, Claude Code on <code>/v1/messages</code> and Codex on <code>/v1/responses</code> were never downgraded, and their unpriced models were served at $0. The spec sorts every LiteLLM call type into five kinds, checks team and key on all of them, and swaps models only for text generation.</p>
+      <p class="sec check"><b class="l">Self-check.</b> Brownout refuses any call type that a future LiteLLM release adds until someone reviews it. Would your governed teams rather hit that 503 than have a new endpoint skip the downgrade?</p>
+      <div class="sec"><b class="l">Needs you.</b>
+        <ul class="list">
+          <li><span class="verb">Decide</span> whether to block the assistants, threads and runs endpoints inside LiteLLM, because LiteLLM runs no plugin hook there and brownout cannot see or refuse them.</li>
+          <li><span class="verb">Check</span> that every fallback deployment that uses an <code>openai/</code> model implements the Responses API, because LiteLLM forwards <code>/v1/messages</code> there as a Responses call.</li>
+          <li><span class="verb">Weigh</span> that images, speech, transcription, moderation, rerank, OCR and video skip the price check, because an unpriced model on those endpoints records $0 spend.</li>
+        </ul>
+      </div>
+      <div class="sec"><b class="l">How it works.</b>
+        <ol class="list">
+          <li>The pre-call hook looks up each call's LiteLLM <code>call_type</code> in one table in <code>bridge.py</code> and gets back one kind.</li>
+          <li>Every allowed call gets the team and key checks. A call that names a model also gets the model checks and the spend-tier decision.</li>
+          <li>Only <code>text</code> calls switch to the team's cheaper fallback once spend passes <code>degrade_at</code>.</li>
+          <li class="more">and 3 more steps</li>
+        </ol>
+      </div>
+      <p class="msyk"><b>Make sure you know:</b> API gateway middleware, LLM API formats<span class="when">added once your follow-ups show the gap</span></p>
+    </div>
+  </div>
+<script>
+  const theme = new URLSearchParams(location.search).get("theme");
+  if (theme) document.documentElement.dataset.theme = theme;
+</script>
+</body>
+</html>

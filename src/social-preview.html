@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>decipher social preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --base: #191724;
+    --surface: #1f1d2e;
+    --overlay: #2a273f;
+    --muted: #6e6a86;
+    --subtle: #908caa;
+    --text: #e0def4;
+    --pine: #9ccfd8;
+    --iris: #c4a7e7;
+    --line: #403d52;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; background: var(--base); overflow: hidden; }
+  body {
+    position: relative;
+    font-family: "Inter", sans-serif;
+    color: var(--text);
+    padding: 0 76px;
+    display: grid;
+    grid-template-columns: auto 480px;
+    gap: 48px;
+    align-items: center;
+  }
+  .texture {
+    position: absolute;
+    inset: 0;
+    padding: 22px 0 0 44px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 15px;
+    line-height: 30px;
+    white-space: nowrap;
+    color: var(--text);
+    opacity: 0.045;
+    filter: blur(0.5px);
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 18%, transparent 48%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 18%, transparent 48%);
+    pointer-events: none;
+  }
+  .brand { position: relative; display: flex; flex-direction: column; gap: 24px; }
+  .wordmark {
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 104px;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .cursor { color: var(--iris); }
+  .tagline { font-size: 36px; font-weight: 600; line-height: 1.25; }
+  .sub { font-size: 21px; color: var(--subtle); }
+  .head {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 32px 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .row { display: flex; align-items: center; gap: 12px; font-size: 20px; }
+  .row b { font-weight: 700; white-space: nowrap; }
+  .gist { display: block; font-size: 22px; line-height: 1.45; padding-left: 18px; border-left: 4px solid var(--iris); }
+  .gist span { color: var(--pine); font-weight: 500; }
+  .gist span span { white-space: nowrap; }
+  .ghost b { color: var(--muted); }
+  .bar { display: inline-block; height: 11px; border-radius: 6px; background: var(--overlay); }
+  .q { color: var(--iris); font-weight: 700; font-size: 22px; }
+</style>
+</head>
+<body>
+  <div class="texture">
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race<br>
+    requeue on Conflict, webhook double-admits on HA, no leader gate, out of scope, tracked in #412<br>
+    forced command under restrict, docker group root-equivalent, bundle over stdin, egress proxy allowlist<br>
+    og:image prerendered, manifest drift fails test, crawler skips JavaScript, versioned filename busts cache<br>
+    observation schema, apply recomposes script, runtime pinned, kept record reproduces natively, shim restored<br>
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race<br>
+    requeue on Conflict, webhook double-admits on HA, no leader gate, out of scope, tracked in #412<br>
+    forced command under restrict, docker group root-equivalent, bundle over stdin, egress proxy allowlist<br>
+    og:image prerendered, manifest drift fails test, crawler skips JavaScript, versioned filename busts cache<br>
+    observation schema, apply recomposes script, runtime pinned, kept record reproduces natively, shim restored<br>
+    reconciler watch cache stale after informer resync, lease-holder missed the CR update, finalizer blocked GC<br>
+    expand-only migration, contract step later, guest credential parked, PKCE state nonce, claim merges owner<br>
+    opaque origin sandbox, JSPI required, digest mismatch 409, stale-view conflict, fidelity suite gates upgrade<br>
+    drift gate short-circuits on cached plan, Path B holds, 14/14 green, per-tenant lock, shared stacks race
+  </div>
+  <div class="brand">
+    <div class="wordmark">decipher<span class="cursor">_</span></div>
+    <div class="tagline">Your agent writes novels.<br>You read the gist.</div>
+    <div class="sub">A Claude Code plugin and Agent Skill</div>
+  </div>
+  <div class="head">
+    <div class="row gist"><b>Gist.</b> <span><span>agent-written specs decoded,</span> <span>gist first,</span> <span>plain English after,</span> <span>one unskimmable question,</span> <span>every caveat kept</span></span></div>
+    <div class="row ghost"><b>Bottom line.</b> <i class="bar" style="width: 70%"></i></div>
+    <div class="row ghost"><b>Self-check.</b> <i class="bar" style="width: 50%"></i><span class="q">?</span></div>
+  </div>
+</body>
+</html>
